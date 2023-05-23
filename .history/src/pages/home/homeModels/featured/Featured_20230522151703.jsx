@@ -1,0 +1,6 @@
+const Featured = () => {
+    return(
+        <>
+        </>
+    )
+}

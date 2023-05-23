@@ -1,0 +1,13 @@
+import { useAuth } from '../../context/AuthContext'
+
+const User = () => {
+  const { token } = useAuth
+  console.log(foundUser)
+  return (
+    <>
+      <div></div>
+    </>
+  )
+}
+
+export default User

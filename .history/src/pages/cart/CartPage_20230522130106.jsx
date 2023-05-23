@@ -1,0 +1,15 @@
+const Cart = () => {
+  return (
+    <>
+      <h1>This is Cart</h1>
+      <h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
+        nobis corporis iure sed harum reprehenderit quae ut, corrupti nesciunt
+        omnis tempore atque illo quod at dolorum? Dolores repellendus provident
+        exercitationem.
+      </h1>
+    </>
+  )
+}
+
+export default Cart

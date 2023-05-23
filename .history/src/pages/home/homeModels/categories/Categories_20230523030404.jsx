@@ -1,0 +1,51 @@
+import { useQuery } from '@tanstack/react-query'
+import styled from 'styled-components'
+import { useProducts } from '../../../../context/ProductContext'
+import { Link } from 'react-router-dom'
+
+const StyledCategoryCardWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+  gap: 1%;
+
+  > a > div {
+
+  }
+
+  @media (min-width: 868px) {
+    > a > div {
+      height: 20rem;
+      flex-basis: 49%;
+      margin: 1% 0;
+    }
+  }
+`
+
+const CategoryCard = styled.div`
+  
+`
+
+const Categories = () => {
+  const { featuredProducts } = useProducts()
+  console.log(featuredProducts)
+  return (
+    <>
+      <StyledCategoryCardWrapper>
+        {featuredProducts?.map((product) => (
+          <Link>
+            <CategoryCard
+              key={product._id}
+              style={{ backgroundImage: `url(${product.imgSrc})` }}
+            ></CategoryCard>
+          </Link>
+        ))}
+      </StyledCategoryCardWrapper>
+    </>
+  )
+}
+
+export default Categories

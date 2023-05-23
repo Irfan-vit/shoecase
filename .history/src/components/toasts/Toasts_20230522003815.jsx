@@ -1,0 +1,1 @@
+const notify = () => toast('Here is your toast.');
