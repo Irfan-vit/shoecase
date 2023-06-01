@@ -4,7 +4,7 @@ const StyledNavWrapper = styled.aside`
   margin-bottom: 9rem;
 `
 
-const StyledTitle = styled.h1`
+const StyledNavTitle = styled.h1`
   font-size: 2rem;
   font-family: var(--font-family-title);
   font-weight: var(--font-weight-bold);
@@ -114,4 +114,4 @@ const StyledNavList = styled.div`
     }
   }
 `
-export { StyledNavWrapper, StyledNav, StyledNavList, StyledTitle }
+export { StyledNavWrapper, StyledNav, StyledNavList, StyledNavTitle }

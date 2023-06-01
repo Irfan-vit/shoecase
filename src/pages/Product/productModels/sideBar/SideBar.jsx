@@ -1,7 +1,13 @@
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import {
+  toggleSortByPrice,
+  toggleSortByRating,
+  toggleCategories,
+} from '../../../../reducer/productsSlice'
+import useCategoriesData from '../../../../hooks/useCategoriesData'
 import SideNavToggle from '../../../../components/animations/Floats/SideNavToggle'
 import SideNavClose from '../../../../components/animations/Floats/SideNavClose'
-
-// import { useFilterProducts } from '../../context/filterProductsContext'
 
 import {
   StyledSideToggle,
@@ -13,7 +19,10 @@ import {
 } from '../../../../styles/index'
 
 const SideBar = () => {
-  // const { filterDispatch, filterState } = useFilterProducts()
+  const categoriesQuery = useCategoriesData()
+  const dispatch = useDispatch()
+  const productsState = useSelector((state) => state.productsReducer)
+  if (categoriesQuery.isLoading) return null
   return (
     <>
       <StyledSideToggle href="#main-menu">
@@ -24,11 +33,7 @@ const SideBar = () => {
           <StyledFormHeader>
             <h4>Form</h4>
             <h4>
-              <a
-              // onClick={() => filterDispatch({ type: 'reset' })}
-              >
-                Clear
-              </a>
+              <button>Clear</button>
             </h4>
           </StyledFormHeader>
           <li>
@@ -37,23 +42,25 @@ const SideBar = () => {
               <h4>Sort By Price</h4>
               <label htmlFor="sortPrice">
                 <input
-                  className="form-checkbox-field"
                   type="radio"
-                  name="sort"
-                  value="HIGH_TO_LOW_PRICE"
-                  // checked={filterState.sortBy === 'HIGH_TO_LOW' ? true : false}
-                  // onChange={() => filterDispatch({ type: 'HIGH_TO_LOW' })}
+                  checked={
+                    productsState.sort.byPrice === 'highToLow' ? true : false
+                  }
+                  onChange={() => {
+                    dispatch(toggleSortByPrice('highToLow'))
+                  }}
                 />
                 <span>High to Low</span>
               </label>
               <label htmlFor="sortPrice">
                 <input
-                  className="form-checkbox-field"
                   type="radio"
-                  name="sort"
-                  value="LOW_TO_HIGH_PRICE"
-                  // checked={filterState.sortBy === 'LOW_TO_HIGH' ? true : false}
-                  // onChange={() => filterDispatch({ type: 'LOW_TO_HIGH' })}
+                  checked={
+                    productsState.sort.byPrice === 'lowToHigh' ? true : false
+                  }
+                  onChange={() => {
+                    dispatch(toggleSortByPrice('lowToHigh'))
+                  }}
                 />
                 <span>Low to High</span>
               </label>
@@ -63,88 +70,40 @@ const SideBar = () => {
             <Hr />
             <StyledForm action="">
               <h4>Sort By Category</h4>
-              <label htmlFor="">
-                <input
-                  className="form-checkbox-field"
-                  type="checkbox"
-                  // checked={filterState.track}
-                  // onChange={() => filterDispatch({ type: 'track' })}
-                />
-                <span>Track</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  className="form-checkbox-field"
-                  type="checkbox"
-                  // checked={filterState.sports}
-                  // onChange={() => filterDispatch({ type: 'sports' })}
-                />
-                <span>Sports</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  className="form-checkbox-field"
-                  type="checkbox"
-                  // checked={filterState.casual}
-                  // onChange={() => filterDispatch({ type: 'casual' })}
-                />
-                <span>Casual</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  className="form-checkbox-field"
-                  type="checkbox"
-                  // checked={filterState.fitness}
-                  // onChange={() => filterDispatch({ type: 'fitness' })}
-                />
-                <span>Fitness</span>
-              </label>
+              {categoriesQuery?.data.map((category) => (
+                <label htmlFor="" key={category._id}>
+                  <input
+                    type="checkbox"
+                    checked={productsState.categories.includes(
+                      category.categoryName,
+                    )}
+                    onChange={() => {
+                      dispatch(toggleCategories(`${category.categoryName}`))
+                    }}
+                  />
+                  <span>{category.categoryName}</span>
+                </label>
+              ))}
             </StyledForm>
           </li>
           <li>
             <Hr />
             <StyledForm action="">
               <h4>Sort By Ranking</h4>
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  // checked={filterState.rating === 4}
-                  // onChange={() => {
-                  //   filterDispatch({ type: 'rating', payload: 4 })
-                  // }}
-                />
-                <span>4 star and above</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  // checked={filterState.rating === 3}
-                  // onChange={() => {
-                  //   filterDispatch({ type: 'rating', payload: 3 })
-                  // }}
-                />
-                <span>3 star and above</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  // checked={filterState.rating === 2}
-                  // onChange={() => {
-                  //   filterDispatch({ type: 'rating', payload: 2 })
-                  // }}
-                />
-                <span>2 star and above</span>
-              </label>
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  // checked={filterState.rating === 1}
-                  // onChange={() => {
-                  //   filterDispatch({ type: 'rating', payload: 1 })
-                  // }}
-                />
-                <span>1 star and above</span>
-              </label>
+              {[4, 3, 2, 1].map((star) => (
+                <label htmlFor="sortPrice" key={star}>
+                  <input
+                    type="radio"
+                    checked={
+                      productsState.sort.byPrice === `${star}` ? true : false
+                    }
+                    onChange={() => {
+                      dispatch(toggleSortByRating(`${star}`))
+                    }}
+                  />
+                  <span>{star} and above</span>
+                </label>
+              ))}
             </StyledForm>
           </li>
           <li>

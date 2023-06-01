@@ -14,4 +14,7 @@ const StyledSelect = styled.select`
     outline: none;
   }
 `
-export { StyledSelect }
+const StyledOption = styled.option`
+
+`
+export { StyledSelect, StyledOption }

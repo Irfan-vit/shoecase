@@ -18,17 +18,23 @@ const defaultOptions = {
 const Mission = () => {
   return (
     <StyledMissionWrapper>
+      <h2>Our Mission</h2>
       <StyledMission>
-        <StyledMissionAnimate options={defaultOptions} animationData={rocket} />
-        <h2>Our Mission</h2>
-        <p>
-          Our mission is what drives us to do everything possible to expand
-          human potential. We do that by creating groundbreaking sport
-          innovations, by making our products more sustainable. We always strive
-          to exceed consumer expectations and provide them with the highest
-          value, be it for any situation, from getting ready for a nighttime
-          stroll to working up a sweat on the pitch, we&apos;ve got you covered.
-        </p>
+        <div>
+          <StyledMissionAnimate
+            options={defaultOptions}
+            animationData={rocket}
+          />
+          <p>
+            Our mission is what drives us to do everything possible to expand
+            human potential. We do that by creating groundbreaking sport
+            innovations, by making our products more sustainable. We always
+            strive to exceed consumer expectations and provide them with the
+            highest value, be it for any situation, from getting ready for a
+            nighttime stroll to working up a sweat on the pitch, we&apos;ve got
+            you covered.
+          </p>
+        </div>
       </StyledMission>
     </StyledMissionWrapper>
   )

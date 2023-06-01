@@ -1,53 +1,31 @@
-import styled from 'styled-components'
-import { useProducts } from '../../../../context/ProductContext'
 import { Link } from 'react-router-dom'
-
-const StyledCategoryCardWrapper = styled.div`
-  > div {
-    padding: 10px;
-    background-color: ${(props) => props.theme.offSetBg};
-    > a > img {
-      height: 100%;
-      width: 100%;
-      transition: all 0.3s ease;
-      transform: scale(1);
-    }
-    > a > img:hover {
-      transform: scale(1.03);
-    }
-  }
-  @media (min-width: 550px) {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    gap: 1%;
-    > div {
-      flex-basis: 49%;
-    }
-  }
-  @media (min-width: 868px) {
-    > div {
-      flex-basis: 24%;
-    }
-  }
-`
+import useProductsData from '../../../../hooks/useProductsData'
+import { useSelector } from 'react-redux'
+import { StyledFeaturedCardWrapper } from '../../../../styles/index'
+import FeaturedTitle from '../../../../components/headings/FeaturedTitle'
+import FeaturedPoster from '../../../../components/poster/FeaturedPoster'
 
 const Featured = () => {
-  const { featuredProducts } = useProducts()
-  console.log(featuredProducts)
+  const productsState = useSelector((state) => state.productsReducer)
+  const { productsQuery } = useProductsData(productsState)
+  const featuredProducts = productsQuery.data?.filter(
+    (products) => products.isFeatured,
+  )
   return (
     <>
-      <StyledCategoryCardWrapper>
+      <FeaturedTitle heading="Shoes we are proud of" />
+      <FeaturedPoster />
+      <StyledFeaturedCardWrapper>
         {featuredProducts?.map((product) => (
           <div key={product._id}>
-            <Link>
+            <Link to={`product/${product._id}`}>
               <img src={product.imgSrc} alt="" />
+              <h4>{product.title}</h4>
+              <h6>${product.price}</h6>
             </Link>
           </div>
         ))}
-      </StyledCategoryCardWrapper>
+      </StyledFeaturedCardWrapper>
     </>
   )
 }

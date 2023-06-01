@@ -1,73 +1,30 @@
 import { useNavigate } from 'react-router-dom'
-// import { useFilterProducts } from '../../context/filterProductsContext'
-import { StyledSelect } from '../../styles/index'
-import { Link } from 'react-router-dom'
+import { StyledSelect, StyledOption } from '../../styles/index'
+import { useState } from 'react'
+import { FaCheck } from 'react-icons/fa'
 
 const Select = () => {
-  // const { filterDispatch, filterState } = useFilterProducts()
+  const [category, setCategory] = useState('')
   const navigate = useNavigate()
   return (
-    <form action="">
-      <label
-        htmlFor="categories"
-        onSubmit={(e) => {
-          e.preventDefault()
+    <>
+      <StyledSelect
+        name="categories"
+        value={category}
+        onChange={(e) => {
+          setCategory(e.target.value)
+          navigate('/product')
         }}
       >
-        <StyledSelect name="categories" id="categories">
-          <option value="select">
-            <Link
-              onClick={() => {
-                // filterDispatch({ type: 'reset' })
-                navigate('/product')
-              }}
-            >
-              Go To Products
-            </Link>
-          </option>
-          <option value="casual">
-            <Link
-              onClick={() => {
-                // filterDispatch({ type: 'casual' })
-                navigate('/product')
-              }}
-            >
-              Casual
-            </Link>
-          </option>
-          <option value="fitness">
-            <Link
-              onClick={() => {
-                navigate('/product')
-                // filterDispatch({ type: 'fitness' })
-              }}
-            >
-              Fitness
-            </Link>
-          </option>
-          <option value="track">
-            <Link
-              onClick={() => {
-                navigate('/product')
-                // filterDispatch({ type: 'track' })
-              }}
-            >
-              Track
-            </Link>
-          </option>
-          <option value="sports">
-            <Link
-              onClick={() => {
-                navigate('/product')
-                // filterDispatch({ type: 'sports' })
-              }}
-            >
-              Sports
-            </Link>
-          </option>
-        </StyledSelect>
-      </label>
-    </form>
+        <StyledOption selected onClick={() => navigate('/product')}>
+          Collections
+        </StyledOption>
+        <StyledOption>Casual</StyledOption>
+        <StyledOption>Fitness</StyledOption>
+        <StyledOption>Track</StyledOption>
+        <StyledOption>Sports</StyledOption>
+      </StyledSelect>
+    </>
   )
 }
 export default Select

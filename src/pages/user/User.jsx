@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { StyledAddress } from './StyledUser'
+import { StyledAddress } from '../../styles/index'
 import { useState } from 'react'
 
 import AddAddress from '../../components/forms/addAddress/AddAddress'

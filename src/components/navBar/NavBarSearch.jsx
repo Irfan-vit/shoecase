@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { StyledNavWrapper, StyledNav, StyledNavList } from '../../styles/index'
+import {
+  StyledNavWrapper,
+  StyledNav,
+  StyledNavList,
+  StyledNavTitle,
+} from '../../styles/index'
 import { FaShoppingCart, FaHeart, FaUserAlt } from 'react-icons/fa'
 import HeroLogo from '../animations/HeroAnimations/HeroLogo'
 
@@ -17,12 +22,13 @@ const NavBarSearch = () => {
       <StyledNav>
         <div>
           <div>
-            <Link to="/">
-              <HeroLogo />
-            </Link>
-          </div>
-          <div>
-            <Select />
+            <StyledNavTitle>
+              S
+              <Link to="/">
+                <HeroLogo />
+              </Link>
+              C
+            </StyledNavTitle>
           </div>
         </div>
         <div>

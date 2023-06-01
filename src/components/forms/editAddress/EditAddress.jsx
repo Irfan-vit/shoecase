@@ -1,8 +1,7 @@
-import { StyledAddressForm } from '../../../pages/user/StyledUser'
+import { StyledAddressForm } from '../../../styles/index'
 import { useAuth } from '../../../context/AuthContext'
 import { useState } from 'react'
 export default function EditAddress(props) {
-  console.log(props)
   const { userDetails, setUserDetails } = useAuth()
   const [update, setUpdate] = useState(props.currentAddress)
   return (

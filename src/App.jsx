@@ -15,49 +15,18 @@ import { useAuth } from './context/AuthContext'
 import NavBar from './components/navBar/NavBar'
 import NavBarSearch from './components/navBar/NavBarSearch'
 import Footer from './components/footer/Footer'
+import ProductDetail from './pages/Product/ProductDetailPage'
 
 function App() {
-  async function getCat() {
-    const res = await axios.get('/api/products')
-    const dat = res.data.products
-    console.log(dat)
-  }
-  useEffect(() => {
-    getCat()
-  }, [])
   return (
     <div className="App">
-      {/* <nav>
-        <Link to="/" style={{ padding: '0.5rem' }}>
-          Home
-        </Link>
-        <Link to="/product" style={{ padding: '0.5rem' }}>
-          Product
-        </Link>
-        <Link to="/cart" style={{ padding: '0.5rem' }}>
-          Cart
-        </Link>
-        <Link to="/wishlist" style={{ padding: '0.5rem' }}>
-          Wishlist
-        </Link>
-        <Link to="/login" style={{ padding: '0.5rem' }}>
-          Login
-        </Link>
-        <Link to="/signup" style={{ padding: '0.5rem' }}>
-          Signup
-        </Link>
-        <Link to="/user" style={{ padding: '0.5rem' }}>
-          User
-        </Link>
-      </nav> */}
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/user" element={<User />} /> */}
+        <Route path="/product/:productId" element={<ProductDetail />} />
         <Route
           path="/cart"
           element={

@@ -1,41 +1,43 @@
 import styled from 'styled-components'
-import heroImage from '../assets/images/hero.jpg'
+import heroImage from '../assets/images/hero2.jpg'
 const StyledHeroImg = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  background-image: linear-gradient(
-      rgba(232, 205, 255, 0.507),
-      rgba(193, 175, 241, 0.9)
-    ),
-    url(${heroImage});
-  height: 300px;
+  background-image: url(${heroImage});
   background-repeat: no-repeat;
-  min-height: 50vh;
+  height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   > div {
-    min-height: 50vh;
+    min-height: 100%;
+    padding: 20px;
     color: ${(props) => props.theme.offSetText};
     display: flex;
     flex-flow: column wrap;
     flex-basis: auto;
-    align-items: center;
+    align-items: flex-start;
     align-content: space-evenly;
-    justify-content: space-evenly;
+    justify-content: space-between;
     text-align: center;
     > div {
+      width: 100%;
       display: flex;
       flex-flow: column wrap;
-      justify-content: center;
-      align-items: center;
     }
   }
-  > div > h1 {
+  > div > div {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-end;
+    padding-right: 5rem;
+  }
+  > div > div > h1 {
     font-size: var(--font-xxl);
     font-family: var(--font-family-hero);
-
     @media (min-width: 550px) {
       font-size: var(--font-xxxl);
     }
@@ -47,7 +49,8 @@ const StyledHeroImg = styled.div`
   div > h2 {
     font-size: var(--font-xl);
     font-family: var(--font-family-hero);
-
+    width: 50%;
+    text-align: left;
     @media (min-width: 550px) {
       font-size: var(--font-xxl);
     }

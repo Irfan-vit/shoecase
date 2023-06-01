@@ -28,4 +28,17 @@ const StyledSearchInput = styled.div`
     }
   }
 `
-export {StyledSearchInput}
+
+const StyledSearchResult = styled.div`
+  position: absolute;
+  width: 100%;
+  background-color: #ffffff;
+
+  > a {
+    text-decoration: none;
+    > div {
+      border: 1px solid black;
+    }
+  }
+`
+export { StyledSearchInput, StyledSearchResult }

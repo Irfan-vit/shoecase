@@ -13,7 +13,10 @@ import GlobalStyles from './utils/theme/Global'
 import 'react-toastify/dist/ReactToastify.min.css'
 import './utils/css/typography.css'
 import './utils/css/colors.css'
-import { ProductProvider } from './context/ProductContext'
+// import { FilterProvider } from './context/filterContext'
+
+import { Provider } from 'react-redux'
+import store from './reducer/store'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,13 +38,15 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <ProductProvider>
+        {/* <FilterProvider> */}
+        <Provider store={store}>
           <ThemeProvider theme={defaultTheme}>
             <App />
             <ToastContainer />
             <GlobalStyles />
           </ThemeProvider>
-        </ProductProvider>
+        </Provider>
+        {/* </FilterProvider> */}
       </AuthProvider>
     </QueryClientProvider>
   </BrowserRouter>,

@@ -5,7 +5,7 @@ import {
   StyledNavWrapper,
   StyledNav,
   StyledNavList,
-  StyledTitle,
+  StyledNavTitle,
 } from '../../styles/index'
 import { FaShoppingCart, FaHeart, FaUserAlt } from 'react-icons/fa'
 import HeroLogo from '../animations/HeroAnimations/HeroLogo'
@@ -25,13 +25,13 @@ const NavBar = () => {
         </div>
         <div>
           <div>
-            <StyledTitle>
+            <StyledNavTitle>
               Shoe
               <Link to="/">
                 <HeroLogo />
               </Link>
               Case
-            </StyledTitle>
+            </StyledNavTitle>
           </div>
           <div>
             <StyledNavList>

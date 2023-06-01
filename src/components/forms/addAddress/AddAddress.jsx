@@ -1,4 +1,4 @@
-import { StyledAddressForm } from '../../../pages/user/StyledUser'
+import { StyledAddressForm } from '../../../styles/index'
 import { useAuth } from '../../../context/AuthContext'
 import { v4 as uuid } from 'uuid'
 export default function AddAddress(props) {

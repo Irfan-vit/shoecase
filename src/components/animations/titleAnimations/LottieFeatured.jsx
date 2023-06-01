@@ -1,5 +1,5 @@
 import { useLottie, useLottieInteractivity } from 'lottie-react'
-import likeButton from '../../../assets/hero.json'
+import likeButton from '../../../assets/json/featured.json'
 
 const style = {
   height: '100%',

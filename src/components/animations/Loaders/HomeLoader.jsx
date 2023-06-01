@@ -1,5 +1,5 @@
 import { useLottie } from 'lottie-react'
-import groovyWalkAnimation from '../../../assets/run.json'
+import groovyWalkAnimation from '../../../assets/json/run.json'
 
 const style = {
   height: 500,
