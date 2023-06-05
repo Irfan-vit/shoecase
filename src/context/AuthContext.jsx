@@ -9,15 +9,17 @@ const AuthProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem('token'))
   const navigate = useNavigate()
   const location = useLocation()
-  const [token, setToken] = useState(localStorageToken?.token)
-  const [userDetails, setUserDetails] = useState(localStorageToken?.user)
+  const [token, setToken] = useState('')
+  const [userDetails, setUserDetails] = useState('')
 
   async function getUser({ email, password }, e) {
+    console.log(email, password)
     try {
       e.preventDefault()
       const {
         data: { foundUser, encodedToken },
       } = await login({ email, password })
+      console.log(encodedToken, 'ec')
       localStorage.setItem(
         'token',
         JSON.stringify({ token: encodedToken, user: foundUser }),
