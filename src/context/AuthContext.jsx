@@ -12,10 +12,10 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('')
   const [userDetails, setUserDetails] = useState('')
 
-  async function getUser({ email, password }, e) {
+  async function getUser({ email, password }) {
     console.log(email, password)
     try {
-      e.preventDefault()
+      console.log(email, password, 'in')
       const {
         data: { foundUser, encodedToken },
       } = await login({ email, password })

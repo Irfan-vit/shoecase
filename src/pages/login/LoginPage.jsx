@@ -121,12 +121,13 @@ const Login = () => {
         <div>
           <form
             onSubmit={(e) => {
+              e.preventDefault()
               const formData = new FormData(e.target)
               const userData = {
                 email: formData?.get('email') ?? '',
                 password: formData?.get('password') ?? '',
               }
-              getUser(userData, e)
+              getUser(userData)
             }}
           >
             <label htmlFor="email">
