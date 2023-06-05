@@ -20,8 +20,11 @@ const Featured = () => {
           <div key={product._id}>
             <Link to={`product/${product._id}`}>
               <img src={product.imgSrc} alt="" />
+              <p>
+                <span>₹</span>
+                {product.price}
+              </p>
               <h4>{product.title}</h4>
-              <h6>${product.price}</h6>
             </Link>
           </div>
         ))}

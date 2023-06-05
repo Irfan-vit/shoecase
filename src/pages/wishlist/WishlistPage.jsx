@@ -1,7 +1,11 @@
+import Nav from '../../components/navBar/Nav'
+import WishlistProducts from './wishlistModels/WishlistProducts'
+
 const Wishlist = () => {
   return (
     <>
-      <h1>This is Wishlist</h1>
+      <Nav />
+      <WishlistProducts />
     </>
   )
 }

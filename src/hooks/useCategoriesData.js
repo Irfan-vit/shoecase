@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { categories } from '../api/categories'
-import { addToCart } from '../api/cart'
 
-const useCategoriesData = (token) => {
-  const categoriesQuery = useQuery(['cart', token], categories)
+const useCategoriesData = () => {
+  const categoriesQuery = useQuery(['cart'], categories)
   return categoriesQuery
 }
 

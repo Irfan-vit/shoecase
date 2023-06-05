@@ -1,18 +1,19 @@
 import Products from './productModels/products/Products'
 import SideBar from './productModels/sideBar/SideBar'
-import NavBarSearch from '../../components/navBar/NavBarSearch'
 import Footer from '../../components/footer/Footer'
 
 import { StyledProductsWrapper } from '../../styles/index'
+import Nav from '../../components/navBar/Nav'
 
 const Product = () => {
   return (
     <>
-      <NavBarSearch />
+      <Nav />
       <StyledProductsWrapper>
         <SideBar />
         <Products />
       </StyledProductsWrapper>
+
       <Footer />
     </>
   )

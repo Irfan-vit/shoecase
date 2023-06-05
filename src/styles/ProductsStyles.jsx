@@ -53,4 +53,19 @@ const StyledProductsWrapper = styled.div`
     }
   }
 `
-export { StyledProducts, StyledProductDetails, StyledProductsWrapper }
+const StyledPagination = styled.div`
+  > button > span > * {
+    width: 100%;
+    height: 100%;
+  }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+`
+
+export {
+  StyledProducts,
+  StyledProductDetails,
+  StyledProductsWrapper,
+  StyledPagination,
+}

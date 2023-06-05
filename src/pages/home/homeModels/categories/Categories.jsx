@@ -3,8 +3,12 @@ import useCategoriesData from '../../../../hooks/useCategoriesData'
 import { StyledCategoryCardWrapper } from '../../../../styles/index'
 import CategoryTitle from '../../../../components/headings/CategoryTitle'
 import CategoryPoster from '../../../../components/poster/CategoryPoster'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleCategories } from '../../../../reducer/productsSlice'
 
 const Categories = () => {
+  const dispatch = useDispatch()
+  const productsState = useSelector((state) => state.productsReducer)
   const categoriesQuery = useCategoriesData()
   return (
     <>
@@ -12,11 +16,18 @@ const Categories = () => {
       <CategoryPoster />
       <StyledCategoryCardWrapper>
         {categoriesQuery?.data?.map((category) => (
-          <div key={category._id}>
+          <div
+            key={category._id}
+            onClick={() =>
+              productsState.categories.includes(category.categoryName)
+                ? null
+                : dispatch(toggleCategories(`${category.categoryName}`))
+            }
+          >
             <img src={category.imgSrc} alt="" />
 
             <div>
-              <Link>
+              <Link to={`product`}>
                 <span>{category.categoryName.toUpperCase()}</span>
               </Link>
             </div>

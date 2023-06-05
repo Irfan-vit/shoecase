@@ -15,17 +15,17 @@ const Footer = () => {
           </h4>
           <ul>
             <li>
-              <a href="">
+              <a href="#">
                 <FaTwitter />
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="#">
                 <FaLinkedinIn />
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="#">
                 <FaInstagram />
               </a>
             </li>

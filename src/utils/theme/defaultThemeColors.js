@@ -1,12 +1,15 @@
 const defaultColors = {
-  primaryBg: '#f7f3ff',
+  primaryBg: '#FEF0FF',
   PrimaryHeading: '#a9b1ba',
   primaryText: '#718096',
-  offSetBg: '#c9c3f6',
-  offSetText: '#474a56',
+  // offSetBg: '#c089f8',
+  // offSetBg: '#A555EC',
+  offSetBg: '#C1AFF1',
+  // offSetBg: 'rgb(193, 175, 241)',
+  offSetText: '#383940',
+  // offSetText: '#49274A',
   action: '#885df1',
   actionOffSet: '#ffffff',
-
   higilight: '#897dec',
   // higilight: '#5D48B8',
 }

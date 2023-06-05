@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import useProductDetailData from '../../hooks/useProductDetailData'
 
-import NavBar from '../../components/navBar/NavBar'
+import Nav from '../../components/navBar/Nav'
 import ProductDetailCard from './productModels/productDetail/ProductDetailCard'
 import ProductDertailShimmer from '../../components/shimmers/ProductDetailShimmer'
 
@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const productDetailQuery = useProductDetailData(productId)
   return (
     <>
-      <NavBar />
+      <Nav />
       <StyledProductDetailWrapper>
         {productDetailQuery.isLoading ? (
           <ProductDertailShimmer />

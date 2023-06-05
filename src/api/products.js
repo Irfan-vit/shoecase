@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+export const productsSearch = async (queryClient, search) => {
+  const res = await axios.get(`/api/products/search?search=${search ?? ''}`)
+  return res.data.products
+}
+
 export const products = async (queryClient, queryState) => {
   const categoriesString = queryState?.categories
     ?.map((category) => `categories[]=${category}`)

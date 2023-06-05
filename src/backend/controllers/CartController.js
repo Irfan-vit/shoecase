@@ -23,7 +23,6 @@ export const getCartItemsHandler = function (schema, request) {
     )
   }
   const userCart = schema.users.findBy({ _id: userId }).cart
-  console.log(userCart, 'initiaL')
   return new Response(200, {}, { cart: userCart })
 }
 
@@ -47,7 +46,6 @@ export const addItemToCartHandler = function (schema, request) {
     }
     const userCart = schema.users.findBy({ _id: userId }).cart
     const { product } = JSON.parse(request.requestBody)
-    console.log(product)
     userCart.push({
       ...product,
       createdAt: formatDate(),
@@ -55,7 +53,6 @@ export const addItemToCartHandler = function (schema, request) {
       qty: 1,
     })
     this.db.users.update({ _id: userId }, { cart: userCart })
-    console.log(userCart, 'AFTER ADDING')
     return new Response(201, {}, { cart: userCart })
   } catch (error) {
     return new Response(

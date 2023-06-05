@@ -5,6 +5,15 @@ import { Response } from 'miragejs'
  * These are Publicly accessible routes.
  * */
 
+export const getSearchProductsHandler = function (schema, request) {
+  const { search } = request.queryParams
+  const data = [...this.db.products]
+  const products = data?.filter((product) =>
+    product.title.toLowerCase().includes(search),
+  )
+  return new Response(200, {}, { products })
+}
+
 /**
  * This handler handles gets all products in the db.
  * send GET Request at /api/products

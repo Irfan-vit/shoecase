@@ -1,6 +1,6 @@
 import HomeLoader from '../../components/animations/Loaders/HomeLoader'
 import Footer from '../../components/footer/Footer'
-import NavBar from '../../components/navBar/NavBar'
+import Nav from '../../components/navBar/Nav'
 import useCategoriesData from '../../hooks/useCategoriesData'
 import useProductsData from '../../hooks/useProductsData'
 import Categories from './homeModels/categories/Categories'
@@ -20,7 +20,7 @@ const Home = () => {
   if (categoriesQuery.isSuccess && productsQuery.isSuccess)
     return (
       <>
-        <NavBar />
+        <Nav />
         <Hero />
         <Mission />
         <Featured />

@@ -15,6 +15,7 @@ import {
 } from './backend/controllers/CategoryController'
 import {
   getAllProductsHandler,
+  getSearchProductsHandler,
   getProductHandler,
 } from './backend/controllers/ProductController'
 import {
@@ -63,6 +64,7 @@ export function makeServer({ environment = 'development' } = {}) {
 
       // products routes (public)
       this.get('/products', getAllProductsHandler.bind(this))
+      this.get('/products/search', getSearchProductsHandler.bind(this))
       this.get('/products/:productId', getProductHandler.bind(this))
 
       // categories routes (public)

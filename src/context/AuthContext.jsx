@@ -24,7 +24,6 @@ const AuthProvider = ({ children }) => {
       )
       setToken(encodedToken)
       setUserDetails(foundUser)
-      console.log(foundUser)
       navigate(location?.state?.from?.pathname ?? '/', { replace: true })
     } catch {
       console.error('invalid Credentials')
@@ -37,14 +36,12 @@ const AuthProvider = ({ children }) => {
       const {
         data: { createdUser, encodedToken },
       } = await signup({ email, password })
-      console.log(createdUser, encodedToken, 'response data')
       localStorage.setItem(
         'token',
         JSON.stringify({ token: encodedToken, user: createdUser }),
       )
       setToken(encodedToken)
       setUserDetails(createdUser)
-      console.log(createdUser)
       navigate('/')
     } catch {
       console.error('invalid signup')

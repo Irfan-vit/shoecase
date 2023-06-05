@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { products } from '../api/products'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 const useProductsData = (queryState) => {
   useEffect(() => {
     window.scrollTo(0, 0)

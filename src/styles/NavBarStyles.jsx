@@ -5,15 +5,15 @@ const StyledNavWrapper = styled.aside`
 `
 
 const StyledNavTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: var(--font-family-title);
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-light);
+  font-weight: 100;
+  color: ${(props) => props.theme.offSetText};
   width: 100%;
-  @media (min-width: 350px) {
+  @media (min-width: 500px) {
     font-size: 3rem;
   }
-  @media (min-width: 950px) {
+  @media (min-width: 1010px) {
     font-size: 4rem;
   }
 `
@@ -84,12 +84,11 @@ const StyledNavList = styled.div`
     display: flex;
     flex-flow: row wrap;
     list-style-type: none;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     align-content: center;
   }
   > ul > li {
-    flex-basis: 23%;
     text-align: center;
   }
   > ul > li > a {
@@ -102,11 +101,11 @@ const StyledNavList = styled.div`
     -webkit-text-decoration-color: transparent;
     -moz-text-decoration-color: transparent;
     text-decoration: none;
-    color: ${(props) => props.theme.higilight};
+    color: ${(props) => props.theme.offSetText};
     :hover,
     :active,
     :focus {
-      color: ${(props) => props.theme.offSetText};
+      color: #222831;
       text-decoration-line: underline;
       text-decoration-style: line;
       text-decoration-color: ${(props) => props.theme.offSetText};

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
 import Attention from '../../../../components/animations/HeroAnimations/HeroCta'
-// import { Button } from '../buttons/Primary'
+import { Button } from '../../../../components/buttons/Primary'
 
 import { StyledHeroImg } from '../../../../styles/HeroImgStyles'
-import shoe from '../../../../assets/images/casualT1.jpg'
 
 const Hero = () => (
   <StyledHeroImg>
@@ -13,7 +12,7 @@ const Hero = () => (
         <div>
           <Attention />
           <Link to="/product">
-            <button>Shop Now</button>
+            <Button>Shop Now</Button>
           </Link>
         </div>
       </div>

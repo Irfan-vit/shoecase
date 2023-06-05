@@ -23,10 +23,10 @@ const StyledMission = styled.div`
       flex-basis: 69%;
     }
   }
-  > div > h2 {
+  > div > p {
     color: #474a56;
-    font-size: var(--font-xxl);
-    text-align: center;
+    color: ${(props) => props.theme.primaryText};
+    font-size: var(--font-lg);
     font-family: var(--foant-family-hero);
   }
 `

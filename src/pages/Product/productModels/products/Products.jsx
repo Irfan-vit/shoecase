@@ -2,28 +2,16 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { setPage } from '../../../../reducer/productsSlice'
 import useProductsData from '../../../../hooks/useProductsData'
-import { useAuth } from '../../../../context/AuthContext'
-import axios from 'axios'
-import { useMutation } from '@tanstack/react-query'
-import { useQueryClient } from '@tanstack/react-query'
 
 import Card from '../../../../components/card/Card'
-import ProductShimmer from '../../../../components/shimmers/ProductShimmer'
+import { Button } from '../../../../components/buttons/Primary'
+import { FaCaretSquareRight, FaCaretSquareLeft } from 'react-icons/fa'
 
-import { StyledProducts, StyledProductDetails } from '../../../../styles/index'
+import {
+  StyledProducts,
+  StyledPagination,
+} from '../../../../styles/index'
 
-
-const addtocart = async ({ product, token }) => {
-  console.log(product, token)
-  const res = await axios.post(
-    `/api/user/cart`,
-    { product },
-    {
-      headers: { authorization: token },
-    },
-  )
-  return res.data.cart
-}
 
 const Products = () => {
   const currPage = useSelector((state) => state.productsReducer)
@@ -33,7 +21,7 @@ const Products = () => {
   const dispatch = useDispatch()
   return (
     <div>
-      <StyledProductDetails>
+      {/* <StyledProductDetails>
         <div>
           <p>Home</p>
           <h2>All</h2>
@@ -47,16 +35,9 @@ const Products = () => {
             {currPage.sort?.byPrice ? <li>{currPage.sort?.byPrice}</li> : null}
           </ul>
         </div>
-      </StyledProductDetails>
-      <button onClick={() => dispatch(setPage('inc'))}>nextPage</button>
-      <span>{currPage.pagination.page}</span>
-      <button onClick={() => dispatch(setPage('dec'))}>previousPage</button>
+      </StyledProductDetails> */}
+
       <StyledProducts>
-        {productsQuery.isLoading &&
-          productsQuery.isFetching &&
-          ['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'].forEach(() => (
-            <ProductShimmer />
-          ))}
         {productsQuery.isSuccess &&
           productsQuery.data?.map((product) => (
             <>
@@ -64,6 +45,19 @@ const Products = () => {
             </>
           ))}
       </StyledProducts>
+      <StyledPagination>
+        <Button onClick={() => dispatch(setPage('dec'))}>
+          <span>
+            <FaCaretSquareLeft />
+          </span>
+        </Button>
+        <span>{currPage.pagination.page}</span>
+        <Button onClick={() => dispatch(setPage('inc'))}>
+          <span>
+            <FaCaretSquareRight />
+          </span>
+        </Button>
+      </StyledPagination>
     </div>
   )
 }

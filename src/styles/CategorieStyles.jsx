@@ -14,6 +14,7 @@ const StyledCategoryCardWrapper = styled.div`
       left: 0;
       text-decoration: none;
       color: ${(props) => props.theme.primaryText};
+      font-family: var(--foant-family-category);
       font-size: var(--font-xl);
       background-image: linear-gradient(
         rgba(232, 205, 255, 0.507),

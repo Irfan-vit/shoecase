@@ -1,12 +1,15 @@
-import NavBar from '../../components/navBar/NavBar'
+import Nav from '../../components/navBar/Nav'
 import CartCards from './cartModels/CartCards'
+import CartSummary from './cartModels/CartSummary'
+import { StyledCartWrapper } from '../../styles'
 const Cart = () => {
   return (
     <>
-      <NavBar />
-      <div>
+      <Nav/>
+      <StyledCartWrapper>
+        <CartSummary />
         <CartCards />
-      </div>
+      </StyledCartWrapper>
     </>
   )
 }

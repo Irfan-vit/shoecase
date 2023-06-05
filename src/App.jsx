@@ -11,11 +11,8 @@ import Signup from './pages/signup/SignupPage'
 import User from './pages/user/User'
 
 import RequiresAuth from './components/RequiresAuth'
-import { useAuth } from './context/AuthContext'
-import NavBar from './components/navBar/NavBar'
-import NavBarSearch from './components/navBar/NavBarSearch'
-import Footer from './components/footer/Footer'
 import ProductDetail from './pages/Product/ProductDetailPage'
+import Checkout from './pages/checkout/Checkout'
 
 function App() {
   return (
@@ -40,6 +37,14 @@ function App() {
           element={
             <RequiresAuth>
               <User />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <RequiresAuth>
+              <Checkout />
             </RequiresAuth>
           }
         />
