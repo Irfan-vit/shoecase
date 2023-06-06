@@ -25,8 +25,11 @@ const User = () => {
           <p>Email : {userDetails?.email}</p>
           <button
             onClick={() => {
+              setUser({
+                token: null,
+                user: null,
+              })
               localStorage.clear()
-              setUser(null)
               navigate('/')
             }}
           >

@@ -130,6 +130,10 @@ const Login = () => {
         'userDetails',
         JSON.stringify(response.data.foundUser),
       )
+      setUser({
+        token: localStorage.getItem('token'),
+        user: localStorage.getItem('userDetails'),
+      })
       navigate(`${location?.state?.prevPath || '/'}`, { replace: true })
     } catch (error) {
       console.log(error)
