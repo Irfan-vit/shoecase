@@ -37,7 +37,7 @@ const SideBar = () => {
             <h4>
               <button
                 onClick={() => {
-                  console.log(clear, 'clear')
+                  dispatch(clear())
                 }}
               >
                 Clear

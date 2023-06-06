@@ -13,12 +13,19 @@ import { useState } from 'react'
 import ProductShimmer from '../shimmers/ProductShimmer'
 
 const StyledNav = styled.div`
-  margin-bottom: 205px;
+  margin-bottom: 15rem;
+
   @media (min-width: 250px) {
-    margin-bottom: 150px;
+    margin-bottom: 12rem;
   }
   @media (min-width: 550px) {
-    margin-bottom: 100px;
+    margin-bottom: 9rem;
+  }
+  @media (min-width: 900px) {
+    margin-bottom: 7rem;
+  }
+  @media (min-width: 1040px) {
+    margin-bottom: 8rem;
   }
 `
 

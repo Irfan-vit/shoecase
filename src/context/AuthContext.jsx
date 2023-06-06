@@ -1,13 +1,13 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ token: null, user: null })
-  useEffect(() => {
-    localStorage.setItem('user', user)
-  }, [user])
-  const token = user?.token
+  const [user, setUser] = useState({
+    token: localStorage.getItem('token'),
+    user: localStorage.getItem('userDetails'),
+  })
+  const token = localStorage.getItem('token')
   return (
     <AuthContext.Provider value={{ user, setUser, token }}>
       {children}

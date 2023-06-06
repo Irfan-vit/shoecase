@@ -125,10 +125,11 @@ const Login = () => {
         password,
       })
       console.log(response.data)
-      setUser({
-        token: response.data.encodedToken,
-        user: response.data.foundUser,
-      })
+      localStorage.setItem('token', JSON.stringify(response.data.encodedToken))
+      localStorage.setItem(
+        'userDetails',
+        JSON.stringify(response.data.foundUser),
+      )
       navigate(`${location?.state?.prevPath || '/'}`, { replace: true })
     } catch (error) {
       console.log(error)

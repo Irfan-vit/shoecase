@@ -4,8 +4,8 @@ import { notify } from '../../components/toasts/Toasts'
 import Nav from '../../components/navBar/Nav'
 const User = () => {
   const { user, setUser } = useAuth()
-  console.log(user)
-  const userDetails = user?.user
+  console.log(user.user)
+  const userDetails = JSON.parse(user?.user)
   const navigate = useNavigate()
   return (
     <>
@@ -22,7 +22,7 @@ const User = () => {
       >
         <div>
           <h2> User Details</h2>
-          <p>Email : {userDetails.email}</p>
+          <p>Email : {userDetails?.email}</p>
           <button
             onClick={() => {
               localStorage.clear()

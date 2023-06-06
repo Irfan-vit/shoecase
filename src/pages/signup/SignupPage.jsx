@@ -13,7 +13,7 @@ const Signup = () => {
             email: formData?.get('email') ?? 'adarshbalika@gmail.com',
             password: formData?.get('password') ?? 'wobalika',
           }
-          setUser(userData, e)
+          setUser(userData)
         }}
       >
         <label htmlFor="email">
