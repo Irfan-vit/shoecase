@@ -4,7 +4,7 @@ import { notify } from '../../components/toasts/Toasts'
 import Nav from '../../components/navBar/Nav'
 const User = () => {
   const { user, setUser } = useAuth()
-  console.log(user.user)
+  console.log(user)
   const userDetails = JSON.parse(user?.user)
   const navigate = useNavigate()
   return (

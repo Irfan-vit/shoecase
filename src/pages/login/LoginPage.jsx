@@ -1,4 +1,4 @@
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import login1 from '../../assets/images/login1.jpg'
 import { Button } from '../cart/cartModels/CartSummary'
@@ -53,7 +53,8 @@ const StyledLoginWrapper = styled.div`
       justify-content: center;
       gap: 2%;
       padding: 0 10%;
-      > p {
+      > a {
+        text-decoration: none;
         color: ${(props) => props.theme.offSetText};
         font-family: var(--font-family-headings);
         text-align: center;
@@ -178,7 +179,7 @@ const Login = () => {
             >
               Guest Login
             </Button>
-            <p>new user ? please sigun up</p>
+            <Link to="/signup">new user ? please sigun up</Link>
           </form>
         </div>
       </StyledLoginWrapper>
