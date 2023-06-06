@@ -117,7 +117,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: fitnessT2,
-    rating: 3.0,
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -128,7 +128,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: fitnessT3,
-    rating: 5.0,
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -139,7 +139,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: fitnessT4,
-    rating: 5.0,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -150,7 +150,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: fitnessT5,
-    rating: 5.0,
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -161,7 +161,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: fitnessT6,
-    rating: 5.0,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -172,7 +172,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT1,
-    rating: 3.5,
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -183,7 +183,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT2,
-    rating: 4.5,
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -194,7 +194,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT3,
-    rating: 4.5,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -205,7 +205,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT4,
-    rating: 4.5,
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -216,7 +216,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT5,
-    rating: 4.5,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -227,7 +227,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: trackT6,
-    rating: 4.5,
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -238,7 +238,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT1,
-    rating: 4,
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -249,7 +249,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT2,
-    rating: 3.5,
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -260,7 +260,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT3,
-    rating: 3.5,
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -271,7 +271,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT4,
-    rating: 3.5,
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -282,7 +282,7 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT5,
-    rating: 3.5,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -293,6 +293,6 @@ export const products = [
     inWishlist: false,
     inCart: false,
     imgSrc: sportsT6,
-    rating: 3.5,
+    rating: 4,
   },
 ]

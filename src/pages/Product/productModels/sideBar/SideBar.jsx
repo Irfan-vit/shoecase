@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import {
   toggleSortByPrice,
   toggleSortByRating,
+  toggleFilterByPriceRange,
   toggleCategories,
 } from '../../../../reducer/productsSlice'
 import useCategoriesData from '../../../../hooks/useCategoriesData'
@@ -36,6 +37,26 @@ const SideBar = () => {
               <button>Clear</button>
             </h4>
           </StyledFormHeader>
+          <li>
+            <Hr />
+            <StyledForm action="">
+              <h4>Sort By Ranking</h4>
+              <label htmlFor="filterPrice">
+                <p>₹ 0 - ₹ {productsState.sort.byPriceRange}</p>
+                <input
+                  onChange={(e) =>
+                    dispatch(
+                      toggleFilterByPriceRange(e?.target?.value ?? '20000'),
+                    )
+                  }
+                  type="range"
+                  value={productsState.sort.byPriceRange}
+                  min="0"
+                  max="20000"
+                />
+              </label>
+            </StyledForm>
+          </li>
           <li>
             <Hr />
             <StyledForm action="">
@@ -95,10 +116,13 @@ const SideBar = () => {
                   <input
                     type="radio"
                     checked={
-                      productsState.sort.byPrice === `${star}` ? true : false
+                      parseInt(productsState.sort.byRating, 10) ===
+                      parseInt(star, 10)
+                        ? true
+                        : false
                     }
                     onChange={() => {
-                      dispatch(toggleSortByRating(`${star}`))
+                      dispatch(toggleSortByRating(star))
                     }}
                   />
                   <span>{star} and above</span>

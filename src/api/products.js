@@ -12,8 +12,9 @@ export const products = async (queryClient, queryState) => {
   let currPage = queryState?.pagination?.page
   const sortByPrice = queryState?.sort?.byPrice
   const sortByRating = queryState?.sort?.byRating
+  const filterByPriceRange = queryState?.sort?.byPriceRange
   const res = await axios.get(
-    `/api/products?currPage=${currPage}&${categoriesString}&sortByPrice=${sortByPrice}&sortByRating=${sortByRating}`,
+    `/api/products?currPage=${currPage}&${categoriesString}&sortByPrice=${sortByPrice}&sortByRating=${sortByRating}&filterByPriceRange=${filterByPriceRange}`,
   )
   res?.data?.products.map((item) =>
     queryClient.setQueryData(['id', item._id], item),

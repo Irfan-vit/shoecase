@@ -22,6 +22,8 @@ export const getSearchProductsHandler = function (schema, request) {
 export const getAllProductsHandler = function (schema, request) {
   let currPage = parseInt(request.queryParams.currPage, 10)
   let star = parseInt(request.queryParams.sortByRating, 10)
+  let priceRange = parseInt(request.queryParams.filterByPriceRange, 10)
+  console.log(priceRange)
   const perPage = 8
   try {
     const copy = [...this.db.products]
@@ -51,10 +53,15 @@ export const getAllProductsHandler = function (schema, request) {
       if (!rating) {
         return filteredData
       }
-      const filteredProducts = products.filter(
-        (product) => product.rating === rating,
+      const filteredProducts = filteredData.filter(
+        (product) => product.rating >= rating,
       )
       return filteredProducts
+    }
+    const filterByPriceRange = (priceRange, filteredData) => {
+      return filteredData.filter(
+        (item) => parseInt(item.price, 10) <= priceRange,
+      )
     }
     const filteredByCategory = filetrByCategory(
       request.queryParams.categories,
@@ -64,11 +71,9 @@ export const getAllProductsHandler = function (schema, request) {
       request.queryParams.sortByPrice,
       filteredByCategory,
     )
-    // const sortedByRating = sortByRating(
-    //   request.queryParams.sortByRating,
-    //   sortedByPrice,
-    // )
-    const products = sortedByPrice.slice(
+    const sortedByRating = sortByRating(star, sortedByPrice)
+    const filterdByPriceRange = filterByPriceRange(priceRange, sortedByRating)
+    const products = filterdByPriceRange.slice(
       (currPage - 1) * perPage,
       currPage * perPage,
     )

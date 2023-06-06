@@ -10,6 +10,7 @@ export const productsSlice = createSlice({
     sort: {
       byPrice: null,
       byRating: null,
+      byPriceRange: 20000,
     },
     categories: [],
   },
@@ -25,8 +26,12 @@ export const productsSlice = createSlice({
       void (state.pagination.perPage = action.payload),
     toggleSortByPrice: (state, action) =>
       void (state.sort.byPrice = action.payload),
-    toggleSortByRating: (state, action) =>
-      void (state.sort.byRating = action.payload),
+    toggleSortByRating: (state, action) => {
+      console.log(action.payload)
+      state.sort.byRating = action.payload
+    },
+    toggleFilterByPriceRange: (state, action) =>
+      void (state.sort.byPriceRange = action.payload),
     toggleCategories: (state, action) =>
       void (state.categories = [
         ...(state.categories.includes(action.payload)
@@ -41,6 +46,7 @@ export const {
   setPerPage,
   toggleSortByPrice,
   toggleSortByRating,
+  toggleFilterByPriceRange,
   toggleCategories,
 } = productsSlice.actions
 
