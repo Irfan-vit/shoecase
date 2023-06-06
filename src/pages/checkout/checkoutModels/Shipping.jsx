@@ -7,7 +7,7 @@ import {
   StyledAddressForm,
 } from '../../../styles/index'
 
-import styled from 'styled-components'
+import { Button } from '../../../components/buttons/Primary'
 import { useState } from 'react'
 
 const Shipping = () => {
@@ -16,7 +16,6 @@ const Shipping = () => {
   return (
     <>
       <StyledAddressWrapper>
-        <p>BACk to Cart</p>
         <h2>Shipping Address</h2>
         {userData?.address?.map((user) =>
           toggleEdit.state === true && toggleEdit.id === user.id ? (
@@ -25,19 +24,17 @@ const Shipping = () => {
                 onSubmit={(e) => {
                   e.preventDefault()
                   const formData = new FormData(e.target)
-                  const userData = {
+                  const address = {
                     name: formData?.get('name') ?? 'john',
                     mobile: formData?.get('mobile') ?? '9234567856',
                     pin: formData?.get('pin') ?? '500044',
                     city: formData?.get('city') ?? 'hyderabad',
                     location: formData.get('location') ?? 'Hi-tech City',
+                    tag: user.id,
                   }
                   userDispatch({
                     type: 'editAddress',
-                    payload: {
-                      id: user.id,
-                      address: userData,
-                    },
+                    payload: address,
                   })
                   setEdit({ id: null, state: false })
                   e.target.reset()
@@ -93,14 +90,22 @@ const Shipping = () => {
                     required
                   />
                 </label>
-                <button>add address</button>
-                <button>close</button>
+                <Button>Save</Button>
               </form>
             </StyledAddressForm>
           ) : (
             <StyledAddress>
               <label htmlFor="">
-                <input type="radio" />
+                <input
+                  type="radio"
+                  checked={user.id === userData?.currentAddress?.id}
+                  onChange={() =>
+                    userDispatch({
+                      type: 'currentAddress',
+                      payload: user.id,
+                    })
+                  }
+                />
                 <div>
                   <p>
                     <strong>{user.name}</strong>
@@ -123,6 +128,14 @@ const Shipping = () => {
                   <p onClick={() => setEdit({ id: user.id, state: true })}>
                     Edit
                   </p>
+                  <hr
+                    style={{
+                      backgroundColor: 'red',
+                      color: 'red',
+                      width: '2px',
+                      height: '100%',
+                    }}
+                  />
                   <p>Remove</p>
                 </div>
               </label>
@@ -135,7 +148,7 @@ const Shipping = () => {
             onSubmit={(e) => {
               e.preventDefault()
               const formData = new FormData(e.target)
-              const userData = {
+              const address = {
                 name: formData?.get('name') ?? 'john',
                 mobile: formData?.get('mobile') ?? '9234567856',
                 pin: formData?.get('pin') ?? '500044',
@@ -143,7 +156,7 @@ const Shipping = () => {
                 location: formData.get('location') ?? 'Hi-tech City',
                 id: uuid(),
               }
-              userDispatch({ type: 'addAddress', payload: userData })
+              userDispatch({ type: 'addAddress', payload: address })
               e.target.reset()
             }}
           >
@@ -172,8 +185,7 @@ const Shipping = () => {
               city
               <input type="text" name="city" placeholder="city" required />
             </label>
-            <button>add address</button>
-            <button>close</button>
+            <Button>Add New Address</Button>
           </form>
         </StyledAddressForm>
       </StyledAddressWrapper>

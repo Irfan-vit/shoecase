@@ -5,6 +5,7 @@ import {
   toggleSortByRating,
   toggleFilterByPriceRange,
   toggleCategories,
+  clear,
 } from '../../../../reducer/productsSlice'
 import useCategoriesData from '../../../../hooks/useCategoriesData'
 import SideNavToggle from '../../../../components/animations/Floats/SideNavToggle'
@@ -34,7 +35,13 @@ const SideBar = () => {
           <StyledFormHeader>
             <h4>Form</h4>
             <h4>
-              <button>Clear</button>
+              <button
+                onClick={() => {
+                  console.log(clear, 'clear')
+                }}
+              >
+                Clear
+              </button>
             </h4>
           </StyledFormHeader>
           <li>

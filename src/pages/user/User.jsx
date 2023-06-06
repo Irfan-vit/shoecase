@@ -3,7 +3,9 @@ import { useAuth } from '../../context/AuthContext'
 import { notify } from '../../components/toasts/Toasts'
 import Nav from '../../components/navBar/Nav'
 const User = () => {
-  const { setToken, userDetails } = useAuth()
+  const { user, setUser } = useAuth()
+  console.log(user)
+  const userDetails = user?.user
   const navigate = useNavigate()
   return (
     <>
@@ -24,7 +26,7 @@ const User = () => {
           <button
             onClick={() => {
               localStorage.clear()
-              setToken(null)
+              setUser(null)
               navigate('/')
             }}
           >

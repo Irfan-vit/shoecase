@@ -1,12 +1,20 @@
+import { Button } from '../../../components/buttons/Primary'
+import { useUserData } from '../../../context/UserDataContext'
 const Order = () => {
+  const { userData } = useUserData()
   return (
     <>
       <div>
-        <button>Place Order</button>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, eum
-          ipsam quas nisi debitis quam repudiandae odio sapiente. Officia omnis
-        </p>
+        <Button>Place Order</Button>
+        <div>
+          <p>
+            Deliver To : <strong>{userData?.currentAddress?.name}</strong>
+          </p>
+          <p>{userData?.currentAddress?.location}</p>
+          <p>{userData?.currentAddress?.city}</p>
+          <p>{userData?.currentAddress?.pin}</p>
+          <p>{userData?.currentAddress?.mobile}</p>
+        </div>
         <div>
           <h4>Order Summary</h4>
           <span>items{2}</span>

@@ -1,9 +1,13 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import login1 from '../../assets/images/login1.jpg'
 import { Button } from '../cart/cartModels/CartSummary'
+import useLogin from '../../hooks/useLoginUser'
+
 // import { login } from '../../components/toasts/Toasts'
 import styled from 'styled-components'
+import axios from 'axios'
+
 const StyledLoginWrapper = styled.div`
   margin: 0 auto;
   display: flex;
@@ -110,7 +114,26 @@ const StyledLoginWrapper = styled.div`
   }
 `
 const Login = () => {
-  const { getUser } = useAuth()
+  const { user, setUser } = useAuth()
+  console.log(user)
+  const navigate = useNavigate()
+  const location = useLocation()
+  async function loginUser({ email, password }) {
+    try {
+      const response = await axios.post('/api/auth/login', {
+        email,
+        password,
+      })
+      console.log(response.data)
+      setUser({
+        token: response.data.encodedToken,
+        user: response.data.foundUser,
+      })
+      navigate(`${location?.state?.prevPath || '/'}`, { replace: true })
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <>
       <StyledLoginWrapper>
@@ -127,7 +150,7 @@ const Login = () => {
                 email: formData?.get('email') ?? '',
                 password: formData?.get('password') ?? '',
               }
-              getUser(userData)
+              loginUser(userData)
             }}
           >
             <label htmlFor="email">
@@ -141,14 +164,11 @@ const Login = () => {
             <Button>SignIn</Button>
             <Button
               type="reset"
-              onClick={(e) =>
-                getUser(
-                  {
-                    email: 'adarshbalika@gmail.com',
-                    password: 'adarshbalika',
-                  },
-                  e,
-                )
+              onClick={() =>
+                loginUser({
+                  email: 'adarshbalika@gmail.com',
+                  password: 'adarshbalika',
+                })
               }
             >
               Guest Login

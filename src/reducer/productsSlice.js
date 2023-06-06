@@ -1,19 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const initialState = {
+  pagination: {
+    page: 1,
+    perPage: 8,
+  },
+  sort: {
+    byPrice: null,
+    byRating: null,
+    byPriceRange: 20000,
+  },
+  categories: [],
+}
+
 export const productsSlice = createSlice({
   name: 'products',
-  initialState: {
-    pagination: {
-      page: 1,
-      perPage: 8,
-    },
-    sort: {
-      byPrice: null,
-      byRating: null,
-      byPriceRange: 20000,
-    },
-    categories: [],
-  },
+  initialState,
   reducers: {
     setPage: (state, action) =>
       void (state.pagination.page =
@@ -32,6 +34,9 @@ export const productsSlice = createSlice({
     },
     toggleFilterByPriceRange: (state, action) =>
       void (state.sort.byPriceRange = action.payload),
+    clear: (state, action) => {
+      return initialState
+    },
     toggleCategories: (state, action) =>
       void (state.categories = [
         ...(state.categories.includes(action.payload)
@@ -48,6 +53,7 @@ export const {
   toggleSortByRating,
   toggleFilterByPriceRange,
   toggleCategories,
+  clear,
 } = productsSlice.actions
 
 export default productsSlice.reducer
