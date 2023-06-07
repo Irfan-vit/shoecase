@@ -36,15 +36,17 @@ const StyledProductsWrapper = styled.div`
   display: flex;
   flex-flow: column wrap;
   @media (min-width: 900px) {
-    min-height: 83vh;
+    min-height: 73.5vh;
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
+    align-content: flex-start;
     width: 100%;
     gap: 1%;
+    flex-grow: 1;
     > :first-child {
       flex-basis: 19%;
     }

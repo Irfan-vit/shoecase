@@ -54,7 +54,25 @@ const StyledProductDetailWrapperShimmer = styled.div`
   }
 `
 // Products Shimmer
+
+const StyledProductsShimmerWrapper = styled.div`
+  max-width: 900px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 1%;
+  @media (min-width: 550px) {
+    flex-basis: 48%;
+  }
+
+  @media (min-width: 900px) {
+    flex-basis: 23%;
+  }
+`
+
 const StyledProductShimmer = styled.figure`
+  margin-bottom: 2%;
   > a > div {
     width: 100%;
     height: auto;
@@ -86,4 +104,5 @@ export {
   StyledProductDetailShimmer,
   StyledProductDetailWrapperShimmer,
   StyledProductShimmer,
+  StyledProductsShimmerWrapper,
 }

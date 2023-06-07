@@ -13,11 +13,12 @@ const CategoryPoster = () => {
           <img src={featuredPoster} alt="" />
         </StyledPosterImageWrapper>
         <StyledPosterDetails>
-          <h2>Products we are proud of</h2>
+          <h2>Shop Based on Your Requirement</h2>
           <p>
-            <strong>SHOE CASE's</strong> Best Selling Prodcts.
+            Shop for every occasion from our various
+            <strong> Categories </strong>
             <br />
-            Fill your closet with amazing shoes before they run out of stock.
+            We got your feet coverd for every situation.
           </p>
           <AttentionDown />
         </StyledPosterDetails>

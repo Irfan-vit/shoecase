@@ -10,7 +10,7 @@ import HeroLogo from '../animations/HeroAnimations/HeroLogo'
 import styled from 'styled-components'
 import useProductsSearch from '../../hooks/useProductsSearch'
 import { useState } from 'react'
-import ProductShimmer from '../shimmers/ProductShimmer'
+import SearchNav from '../animations/Loaders/NavSearch'
 
 const StyledNav = styled.div`
   margin-bottom: 15rem;
@@ -55,6 +55,15 @@ const StyledNavBarWrapper = styled.div`
       height: 30px;
       border: 2px solid ${(props) => props.theme.offSetText};
       transition: all 0.3s ease;
+    }
+    > div {
+      display: none;
+    }
+    > form:has(> input) + div:hover {
+      display: block;
+    }
+    > form:has(> input:focus-visible, > input:active) + div {
+      display: block;
     }
     > form > input:focus + span {
       animation: sweep 3s ease-in-out;
@@ -145,17 +154,20 @@ const StyledNavBarWrapper = styled.div`
 const StyledSearchResult = styled.div`
   position: absolute;
   background-color: #ffffff;
+  border: 2px solid #c1aff1;
+  padding: 0 2rem;
+  border-radius: 5px;
   width: 100%;
+  overflow-y: scroll;
+  max-height: 50vh;
   @media (min-width: 900px) {
     display: flex;
     flex-flow: row wrap;
-    width: 150%;
+    width: 100%;
     right: 0%;
-    overflow-y: scroll;
-    max-height: 80vh;
     top: 100%;
     > :nth-child(1) {
-      flex-basis: 20%;
+      flex-basis: 100%;
       position: relative;
       > ul {
         height: 100%;
@@ -171,14 +183,19 @@ const StyledSearchResult = styled.div`
         }
       }
     }
-    > :nth-child(2) {
-      flex-basis: 80%;
-    }
   }
 `
 
 const StyledSearchCard = styled.div`
   display: flex;
+  > a {
+    text-decoration: none;
+  }
+  > a > p {
+    color: ${(props) => props.theme.offSetText};
+    font-family: var(--font-family-headings);
+    font-size: var(--font-xs);
+  }
   > a > div > img {
     height: 100%;
     width: 100%;
@@ -191,8 +208,7 @@ const StyledSearchCardWrapper = styled.div`
   gap: 2%;
   > div {
     flex-basis: 23%;
-    flex-grow: 1;
-    border: 1px solid black;
+    /* flex-grow: 1; */
     margin-bottom: 2%;
   }
 `
@@ -211,36 +227,19 @@ const Nav = () => {
           Case
         </StyledNavTitle>
         <div>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <input type="text" onChange={(e) => setSearch(e.target.value)} />
             <span>
               <MdSearch />
             </span>
           </form>
           <StyledSearchResult>
-            {/* <h4>
-              {searchQuery.isLoading || searchQuery.isFetching
-                ? ['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'].map(() => (
-                    <ProductShimmer />
-                  ))
-                : null}
-            </h4> */}
-            {/* <div>
-              <ul>
-                <li>fitness</li>
-                <li>sport</li>
-                <li>casual</li>
-                <li>Track</li>
-              </ul>
-            </div> */}
             <StyledSearchCardWrapper>
               {search === '' ? null : searchQuery.isLoading ||
                 searchQuery.isFetching ? (
-                ['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'].map(() => (
-                  <ProductShimmer />
-                ))
+                <SearchNav />
               ) : !searchQuery?.data.length ? (
-                <h1>none</h1>
+                <h4>No Products Found</h4>
               ) : (
                 searchQuery?.data?.map((fil) => (
                   <StyledSearchCard>
@@ -248,7 +247,8 @@ const Nav = () => {
                       <div>
                         <img src={fil.imgSrc} alt="" />
                       </div>
-                      <h3>{fil.title}</h3>
+                      <p>{fil.price}</p>
+                      <p>{fil.title}</p>
                     </Link>
                   </StyledSearchCard>
                 ))

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledProduct = styled.figure`
   position: relative;
-  background-color: #fafafa44;
+  background-color: #fafafa84;
   transition: all 1s ease;
   border: 2px solid #e2dbeb;
 

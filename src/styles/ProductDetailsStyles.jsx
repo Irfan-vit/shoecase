@@ -14,6 +14,28 @@ const StyledProductDetailImage = styled.div`
     position: absolute;
     right: 0;
     top: 0;
+    > span {
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      border-radius: 0px 3px 0px 10px;
+      color: ${(props) => props.theme.offSetText};
+      margin: 0px 0px 10px 0px;
+      transition: all 0.3s ease;
+      background-color: ${(props) => props.theme.primaryBg};
+      text-align: center;
+      display: flex;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+      > svg {
+        font-weight: 900px;
+        font-size: 1.3rem;
+        /* transform: scale(1.3); */
+        :hover {
+          /* transform: scale(1.5); */
+        }
+      }
+    }
   }
   @media (min-width: 850px) {
     flex-basis: 50%;
