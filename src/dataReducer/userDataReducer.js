@@ -1,10 +1,12 @@
 const initialData = {
   address: [],
   currentAddress: null,
+  currentPage: 1,
 }
 const ADDADDRESS = 'addAddress'
 const EDITADDRESS = 'editAddress'
 const CURRENTADDRESS = 'currentAddress'
+const REMOVEADDRESS = 'removeAddress'
 const dataReducer = (state, action) => {
   switch (action.type) {
     case ADDADDRESS:
@@ -26,6 +28,16 @@ const dataReducer = (state, action) => {
         currentAddress: state.address.find(
           (address) => address.id === action.payload,
         ),
+      }
+    case REMOVEADDRESS:
+      console.log(state.address.filter((add) => add.id === action.payload))
+      return {
+        ...state,
+        address: state.address.filter((add) => add.id !== action.payload),
+        currentAddress:
+          state.currentAddress.id === action.payload
+            ? null
+            : state.currentAddress,
       }
     default:
       throw new Error('Something wrong occured in dispatch')

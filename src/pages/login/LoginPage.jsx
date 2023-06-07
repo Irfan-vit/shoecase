@@ -115,8 +115,7 @@ const StyledLoginWrapper = styled.div`
   }
 `
 const Login = () => {
-  const { user, setUser } = useAuth()
-  console.log(user)
+  const { setUser } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   async function loginUser({ email, password }) {
@@ -125,7 +124,6 @@ const Login = () => {
         email,
         password,
       })
-      console.log(response.data)
       localStorage.setItem('token', JSON.stringify(response.data.encodedToken))
       localStorage.setItem(
         'userDetails',

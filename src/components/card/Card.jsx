@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Rating } from 'react-simple-star-rating'
 import useCategoriesData from '../../hooks/useCategoriesData'
 import {
@@ -23,6 +23,7 @@ import useRemoveFromWishlist from '../../hooks/useRemoveFromWishlist'
 const Card = ({ product }) => {
   const { token } = useAuth()
   const { addToCartMutation } = useAddToCart(addtocart, token)
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
   const cacheData = queryClient.getQueryData(['getCart', token])
   const categoriesQuery = useCategoriesData()
@@ -57,7 +58,11 @@ const Card = ({ product }) => {
         {product.isFeatured && <StyledFeatured>Featured</StyledFeatured>}
         <StyledIconsWrapper>
           {cacheData?.find((item) => item._id === product._id) ? (
-            <span onClick={() => {}}>
+            <span
+              onClick={() => {
+                navigate('/cart')
+              }}
+            >
               <MdOutlineShoppingCartCheckout />
             </span>
           ) : addToCartMutation.isLoading ? (

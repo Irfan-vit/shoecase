@@ -12,8 +12,8 @@ const ProductShimmer = () => {
     <>
       <SkeletonTheme baseColor="#e3c5f744" highlightColor="#875df12f">
         <StyledProductsShimmerWrapper>
-          {['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'].map(() => (
-            <StyledProductShimmer>
+          {['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'].map((a, i) => (
+            <StyledProductShimmer key={i}>
               <Link>
                 <div>
                   <Skeleton height={'100%'} />

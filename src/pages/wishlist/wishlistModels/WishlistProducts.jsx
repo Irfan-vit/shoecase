@@ -3,6 +3,8 @@ import { useAuth } from '../../../context/AuthContext'
 import Card from '../../../components/card/Card'
 import { getWishlistData } from '../../../api/wishlist'
 import styled from 'styled-components'
+import { H1 } from '../../../styles'
+import Empty from '../../../components/animations/Loaders/Empty'
 
 const StyledWishlist = styled.div`
   max-width: 1200px;
@@ -27,11 +29,18 @@ const WishlistProducts = () => {
   const getwishlistQuery = useQuery(['wishlist', token], getWishlistData)
   return (
     <>
-      <StyledWishlist>
-        {getwishlistQuery.data?.map((product) => (
-          <Card key={product._id} product={product} />
-        ))}
-      </StyledWishlist>
+      {getwishlistQuery.data?.length <= 0 || !getwishlistQuery.data ? (
+        <>
+          <H1>Your Wishlist is Empty</H1>
+          <Empty />
+        </>
+      ) : (
+        <StyledWishlist>
+          {getwishlistQuery.data?.map((product) => (
+            <Card key={product._id} product={product} />
+          ))}
+        </StyledWishlist>
+      )}
     </>
   )
 }

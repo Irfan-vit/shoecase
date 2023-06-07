@@ -18,11 +18,15 @@ import {
   StyledSideToggleClose,
   Hr,
 } from '../../../../styles/index'
+import useProductsData from '../../../../hooks/useProductsData'
 
 const SideBar = () => {
   const categoriesQuery = useCategoriesData()
   const dispatch = useDispatch()
   const productsState = useSelector((state) => state.productsReducer)
+  const { productsQuery } = useProductsData(
+    useSelector((state) => state.productsReducer),
+  )
   if (categoriesQuery.isLoading) return null
   return (
     <>
@@ -32,7 +36,7 @@ const SideBar = () => {
       <StyledAside id="main-menu">
         <ul>
           <StyledFormHeader>
-            <h4>Form</h4>
+            <h4>{productsQuery.isFetching ? 'Fetching' : 'Filter'}</h4>
             <h4>
               <button
                 onClick={() => {

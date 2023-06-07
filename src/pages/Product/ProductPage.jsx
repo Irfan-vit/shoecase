@@ -18,7 +18,11 @@ const Product = () => {
       <Nav />
       <StyledProductsWrapper>
         <SideBar />
-        {productsQuery.isLoading ? <ProductShimmer /> : <Products />}
+        {productsQuery.isLoading ? (
+          <ProductShimmer />
+        ) : (
+          <Products />
+        )}
       </StyledProductsWrapper>
 
       <Footer />

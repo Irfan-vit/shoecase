@@ -23,7 +23,6 @@ export const getAllProductsHandler = function (schema, request) {
   let currPage = parseInt(request.queryParams.currPage, 10)
   let star = parseInt(request.queryParams.sortByRating, 10)
   let priceRange = parseInt(request.queryParams.filterByPriceRange, 10)
-  console.log(priceRange)
   const perPage = 8
   try {
     const copy = [...this.db.products]

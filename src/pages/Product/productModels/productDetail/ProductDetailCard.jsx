@@ -13,9 +13,11 @@ import useAddToWishlist from '../../../../hooks/useAddToWishlist'
 import { TbHeartPlus, TbHeartMinus } from 'react-icons/tb'
 import Success from '../../../../components/animations/Loaders/Success'
 import { Rating } from 'react-simple-star-rating'
+import { useNavigate } from 'react-router-dom'
 
 const ProductDetailCard = ({ props }) => {
   const { token } = useAuth()
+  const navigate = useNavigate()
   const { addToCartMutation } = useAddToCart(addtocart, token)
   const queryClient = useQueryClient()
   const cacheData = queryClient.getQueryData(['getCart', token])
@@ -82,7 +84,13 @@ const ProductDetailCard = ({ props }) => {
         </ul>
         <div>
           {cacheData?.find((item) => item._id === props._id) ? (
-            <Button>Go to Cart</Button>
+            <Button
+              onClick={() => {
+                navigate('/cart')
+              }}
+            >
+              Go to Cart
+            </Button>
           ) : addToCartMutation.isLoading ? (
             <Button>Adding...</Button>
           ) : (

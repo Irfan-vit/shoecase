@@ -3,7 +3,6 @@ import { useAuth } from '../context/AuthContext'
 
 export default function RequiresAuth({ children }) {
   const { token } = useAuth()
-  console.log(token)
   const location = useLocation()
   return token ? (
     children

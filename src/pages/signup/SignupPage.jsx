@@ -1,34 +1,3 @@
-// import { useAuth } from '../../context/AuthContext'
-
-// const Signup = () => {
-//   const { setUser } = useAuth()
-//   return (
-//     <>
-//       <h1>This is Signup</h1>
-//       <form
-//         onSubmit={(e) => {
-//           const formData = new FormData(e.target)
-//           const userData = {
-//             email: formData?.get('email') ?? 'adarshbalika@gmail.com',
-//             password: formData?.get('password') ?? 'wobalika',
-//           }
-//           setUser(userData)
-//         }}
-//       >
-//         <label htmlFor="email">
-//           <input type="email" name="email" required />
-//         </label>
-//         <label htmlFor="password">
-//           <input type="text" name="password" required />
-//         </label>
-//         <button>Signup</button>
-//       </form>
-//     </>
-//   )
-// }
-
-// export default Signup
-
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import login1 from '../../assets/images/login1.jpg'
@@ -152,13 +121,11 @@ const Signup = () => {
   const location = useLocation()
   async function signupUser({ firstName, email, password }) {
     try {
-      console.log(firstName, email, password, 'signup')
       const response = await axios.post('/api/auth/signup', {
         email,
         password,
         firstName,
       })
-      console.log(response.data)
       localStorage.setItem('token', JSON.stringify(response.data.encodedToken))
       localStorage.setItem(
         'userDetails',

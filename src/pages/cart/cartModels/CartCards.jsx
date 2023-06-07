@@ -13,15 +13,9 @@ const CartCards = () => {
   return (
     <>
       <StyledCartCardsWrapper>
-        {data?.length <= 0 || !data ? (
-          <div>
-            <Empty />
-          </div>
-        ) : (
-          data.map((product) => (
-            <CartCard product={product} key={product._id} />
-          ))
-        )}
+        {data?.map((product) => (
+          <CartCard product={product} key={product._id} />
+        ))}
       </StyledCartCardsWrapper>
     </>
   )

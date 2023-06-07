@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 const H1 = styled.h1`
   margin-top: 0.5rem;
+  text-align: center;
+  margin: 0 auto;
   color: #474a56;
   font-size: var(--font-xl);
   letter-spacing: 1px;

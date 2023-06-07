@@ -98,7 +98,6 @@ const Shipping = () => {
               <label htmlFor="">
                 <input
                   type="radio"
-                  checked={user.id === userData?.currentAddress?.id}
                   onChange={() =>
                     userDispatch({
                       type: 'currentAddress',
@@ -136,7 +135,16 @@ const Shipping = () => {
                       height: '100%',
                     }}
                   />
-                  <p>Remove</p>
+                  <p
+                    onClick={() =>
+                      userDispatch({
+                        type: 'removeAddress',
+                        payload: user.id,
+                      })
+                    }
+                  >
+                    Remove
+                  </p>
                 </div>
               </label>
             </StyledAddress>

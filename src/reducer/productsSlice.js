@@ -17,19 +17,14 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setPage: (state, action) =>
-      void (state.pagination.page =
-        action.payload === 'inc'
-          ? (state.pagination.page += 1)
-          : action.payload === 'dec'
-          ? (state.pagination.page -= 1)
-          : state.pagination.page),
+    setPage: (state, action) => {
+      state.pagination.page = action.payload
+    },
     setPerPage: (state, action) =>
       void (state.pagination.perPage = action.payload),
     toggleSortByPrice: (state, action) =>
       void (state.sort.byPrice = action.payload),
     toggleSortByRating: (state, action) => {
-      console.log(action.payload)
       state.sort.byRating = action.payload
     },
     toggleFilterByPriceRange: (state, action) =>
