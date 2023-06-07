@@ -9,7 +9,7 @@ const CartSummary = () => {
   const navigate = useNavigate()
   const { token } = useAuth()
   const getCartQuery = useQuery(['getCart', token], getCart)
-  const data = getCartQuery.data
+  const data = getCartQuery?.data
   const getTotal = () => {
     return data?.reduce((ac, cv) => (ac += cv.price * cv.qty), 0)
   }
@@ -24,7 +24,8 @@ const CartSummary = () => {
               cart total: <strong>₹{getTotal()}</strong>
             </p>
             <p>
-              shipping: <strong>₹500</strong>
+              shipping:
+              <strong>{data?.length === 0 ? null : 500}</strong>
             </p>
           </div>
           <div>
@@ -34,10 +35,17 @@ const CartSummary = () => {
           </div>
           <div>
             <p>
-              SubTotal: <strong>₹{getTotal() + 500}</strong>
+              SubTotal:{' '}
+              <strong>₹{data?.length === 0 ? null : getTotal() + 500}</strong>
             </p>
           </div>
-          <Button onClick={() => navigate('/checkout')}>Check Out</Button>
+          <Button
+            disabled={data?.length === 0}
+            onClick={() => navigate('/checkout')}
+          >
+            Check Out
+          </Button>
+          {data?.length === 0 && <p>please add items in cart to checkout</p>}
           <div>
             <img src={cart} height={'100%'} width={'100%'} alt="" />
           </div>

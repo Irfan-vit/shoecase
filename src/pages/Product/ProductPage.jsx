@@ -11,6 +11,7 @@ import ProductShimmer from '../../components/shimmers/ProductShimmer'
 const Product = () => {
   const { productsQuery } = useProductsData(
     useSelector((state) => state.productsReducer),
+    1,
   )
   return (
     <>

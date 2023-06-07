@@ -112,7 +112,7 @@ const Shipping = () => {
                   </p>
                   <p
                     style={{
-                      width: '200px',
+                      maxWidth: '200px',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace: 'nowrap',

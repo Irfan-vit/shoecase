@@ -10,7 +10,6 @@ import {
 import useCategoriesData from '../../../../hooks/useCategoriesData'
 import SideNavToggle from '../../../../components/animations/Floats/SideNavToggle'
 import SideNavClose from '../../../../components/animations/Floats/SideNavClose'
-
 import {
   StyledSideToggle,
   StyledFormHeader,

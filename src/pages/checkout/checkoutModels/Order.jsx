@@ -1,14 +1,28 @@
+import { useQuery } from '@tanstack/react-query'
 import { Button } from '../../../components/buttons/Primary'
+import { useAuth } from '../../../context/AuthContext'
 import { useUserData } from '../../../context/UserDataContext'
+import { getCart } from '../../../api/cart'
 const Order = () => {
   const { userData } = useUserData()
+  const { token } = useAuth()
+  const getCartQuery = useQuery(['getCart', token], getCart)
+  const data = getCartQuery?.data
+  const getTotal = () => {
+    return data?.reduce((ac, cv) => (ac += cv.price * cv.qty), 0)
+  }
   return (
     <>
       <div>
         <Button>Place Order</Button>
         <div>
           <p>
-            Deliver To : <strong>{userData?.currentAddress?.name}</strong>
+            Deliver To :{' '}
+            {!userData?.currentAddress ? (
+              'please select/add an address'
+            ) : (
+              <strong>{userData?.currentAddress?.name}</strong>
+            )}
           </p>
           <p>{userData?.currentAddress?.location}</p>
           <p>{userData?.currentAddress?.city}</p>
@@ -17,11 +31,11 @@ const Order = () => {
         </div>
         <div>
           <h4>Order Summary</h4>
-          <span>items{2}</span>
-          <span>shipping{500}</span>
+          <p>items: {data?.length}</p>
+          <p>shipping: {500}</p>
         </div>
         <div>
-          <p>Order Total</p>
+          <p>Order Total ₹{data?.length === 0 ? null : getTotal() + 500}</p>
         </div>
       </div>
     </>

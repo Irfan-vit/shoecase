@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { notify } from '../../components/toasts/Toasts'
+import { Button } from '../../components/buttons/Primary'
 import Nav from '../../components/navBar/Nav'
 const User = () => {
   const { user, setUser } = useAuth()
@@ -23,7 +23,7 @@ const User = () => {
         <div>
           <h2> User Details</h2>
           <p>Email : {userDetails?.email}</p>
-          <button
+          <Button
             onClick={() => {
               setUser({
                 token: null,
@@ -34,13 +34,7 @@ const User = () => {
             }}
           >
             Log out
-          </button>
-        </div>
-        <div>
-          <button onClick={notify}>Notify !</button>
-        </div>
-        <div>
-          <h2>Address</h2>
+          </Button>
         </div>
       </div>
     </>

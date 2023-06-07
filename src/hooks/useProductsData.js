@@ -4,10 +4,7 @@ import { useEffect } from 'react'
 const useProductsData = (queryState) => {
   useEffect(() => {
     window.scrollTo(0, 0)
-    
-    console.log(queryState)
   }, [queryState])
-
   const queryClient = useQueryClient()
   const productsQuery = useQuery(
     ['products', queryState],

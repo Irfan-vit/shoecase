@@ -13,11 +13,17 @@ const StyledCheckout = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+    gap: 5%;
     > :nth-child(1) {
-      flex-basis: 70%;
+      flex-basis: 60%;
     }
     > :nth-child(2) {
-      flex-basis: 30%;
+      flex-basis: 20%;
+      height: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      align-content: space-between;
     }
   }
 `

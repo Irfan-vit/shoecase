@@ -10,13 +10,26 @@ const StyledAddress = styled.div`
   padding: 1rem;
   label {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row no-wrap;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    > :nth-child(1) {
+      flex-basis: 10%;
+    }
+    > :nth-child(2) {
+      flex-basis: 50%;
+    }
+    > :nth-child(3) {
+      flex-basis: 15%;
+    }
   }
   label > div {
     display: flex;
-    flex-flow: row wrap;
-    gap: 0%;
+    gap: 2%;
+    /* width: 100%; */
+    justify-content: space-between;
+    flex-basis: 40%;
   }
 `
 const StyledAddressForm = styled.div`
