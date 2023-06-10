@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import Attention from '../../../../components/animations/HeroAnimations/HeroCta'
 import { Button } from '../../../../components/buttons/Primary'
-
+import Attention from '../../../../components/animations/HeroAnimations/HeroCta'
 import { StyledHeroImg } from '../../../../styles/HeroImgStyles'
 
 const Hero = () => (

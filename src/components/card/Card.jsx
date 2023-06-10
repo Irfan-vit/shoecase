@@ -1,6 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Rating } from 'react-simple-star-rating'
+import { useQueryClient } from '@tanstack/react-query'
+import { useAuth } from '../../context/AuthContext'
+import { addtocart } from '../../api/cart'
+import { addtoWishlist, removeFromWishlist } from '../../api/wishlist'
+import useAddToCart from '../../hooks/useAddToCart'
+import useAddToWishlist from '../../hooks/useAddToWishlist'
+import useRemoveFromWishlist from '../../hooks/useRemoveFromWishlist'
 import useCategoriesData from '../../hooks/useCategoriesData'
+import Success from '../animations/Loaders/Success'
+import { TbHeartPlus, TbHeartMinus } from 'react-icons/tb'
 import {
   StyledProduct,
   StyledIconsWrapper,
@@ -10,29 +19,20 @@ import {
   MdOutlineAddShoppingCart,
   MdOutlineShoppingCartCheckout,
 } from 'react-icons/md'
-import { TbHeartPlus, TbHeartMinus } from 'react-icons/tb'
-import { useQueryClient } from '@tanstack/react-query'
-import { useAuth } from '../../context/AuthContext'
-import Success from '../animations/Loaders/Success'
-import useAddToCart from '../../hooks/useAddToCart'
-import { addtocart } from '../../api/cart'
-import useAddToWishlist from '../../hooks/useAddToWishlist'
-import { addtoWishlist, removeFromWishlist } from '../../api/wishlist'
-import useRemoveFromWishlist from '../../hooks/useRemoveFromWishlist'
 
 const Card = ({ product }) => {
   const { token } = useAuth()
-  const { addToCartMutation } = useAddToCart(addtocart, token)
   const navigate = useNavigate()
   const queryClient = useQueryClient()
-  const cacheData = queryClient.getQueryData(['getCart', token])
-  const categoriesQuery = useCategoriesData()
+  const { addToCartMutation } = useAddToCart(addtocart, token)
   const { addToWishlistMutation } = useAddToWishlist(addtoWishlist, token)
-  const cacheWishlistData = queryClient.getQueryData(['wishlist', token])
   const { removeFromWishlistMutation } = useRemoveFromWishlist(
     removeFromWishlist,
     token,
   )
+  const cacheData = queryClient.getQueryData(['getCart', token])
+  const cacheWishlistData = queryClient.getQueryData(['wishlist', token])
+  const categoriesQuery = useCategoriesData()
   if (categoriesQuery.isLoading) return null
   const category = categoriesQuery.data.find(
     (category) => category.categoryName === product.categoryName,
@@ -52,7 +52,6 @@ const Card = ({ product }) => {
             </p>
             <h4>{product.title}</h4>
             <Rating initialValue={product.rating} transition size={20} />
-            {/* <Button varient="outline">View Details</Button> */}
           </figcaption>
         </Link>
         {product.isFeatured && <StyledFeatured>Featured</StyledFeatured>}

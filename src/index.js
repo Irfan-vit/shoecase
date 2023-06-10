@@ -16,7 +16,7 @@ import './utils/css/colors.css'
 import { UserDataProvider } from './context/UserDataContext'
 
 import { Provider } from 'react-redux'
-import store from './reducer/store'
+import store from './rtk/store'
 
 const queryClient = new QueryClient({
   defaultOptions: {

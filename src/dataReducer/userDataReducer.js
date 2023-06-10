@@ -1,7 +1,6 @@
 const initialData = {
   address: [],
   currentAddress: null,
-  currentPage: 1,
 }
 const ADDADDRESS = 'addAddress'
 const EDITADDRESS = 'editAddress'

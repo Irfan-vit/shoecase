@@ -1,15 +1,16 @@
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import useProductsData from '../../../../hooks/useProductsData'
+import useCategoriesData from '../../../../hooks/useCategoriesData'
+import SideNavClose from '../../../../components/animations/Floats/SideNavClose'
+import SideNavToggle from '../../../../components/animations/Floats/SideNavToggle'
 import {
   toggleSortByPrice,
   toggleSortByRating,
   toggleFilterByPriceRange,
   toggleCategories,
   clear,
-} from '../../../../reducer/productsSlice'
-import useCategoriesData from '../../../../hooks/useCategoriesData'
-import SideNavToggle from '../../../../components/animations/Floats/SideNavToggle'
-import SideNavClose from '../../../../components/animations/Floats/SideNavClose'
+} from '../../../../rtk/productsSlice'
 import {
   StyledSideToggle,
   StyledFormHeader,
@@ -18,11 +19,10 @@ import {
   StyledSideToggleClose,
   Hr,
 } from '../../../../styles/index'
-import useProductsData from '../../../../hooks/useProductsData'
 
 const SideBar = () => {
-  const categoriesQuery = useCategoriesData()
   const dispatch = useDispatch()
+  const categoriesQuery = useCategoriesData()
   const productsState = useSelector((state) => state.productsReducer)
   const { productsQuery } = useProductsData(
     useSelector((state) => state.productsReducer),

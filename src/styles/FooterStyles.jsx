@@ -10,9 +10,6 @@ const StyledFooter = styled.footer`
   > * h4 {
     font-size: var(--font-lg);
   }
-  > * li {
-    font-size: var(--font-md);
-  }
   text-align: center;
   padding: 2rem;
   display: flex;
@@ -28,6 +25,10 @@ const StyledFooter = styled.footer`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+  }
+  > div > ul > li > button {
+    background: none;
+    font-size: var(--font-md);
   }
   > div > ol,
   address > ol {

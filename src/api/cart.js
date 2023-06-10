@@ -26,7 +26,7 @@ export const addtocart = async ({ product, token }) => {
           return `added to ${added.product.title} To cart`
         },
       },
-      error: 'Promise rejected 🤯',
+      error: 'Please Login First 🤯',
     },
   )
   return res.data.cart
@@ -44,7 +44,7 @@ export const removeFromCart = async ({ _id, token }) => {
           return `Removed from cart`
         },
       },
-      error: 'Promise rejected 🤯',
+      error: 'Please Login First 🤯',
     },
   )
   return res.data.cart

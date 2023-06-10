@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { StyledCartSummary } from '../../../styles/index'
 import { useNavigate } from 'react-router-dom'
 import cart from '../../../assets/images/cart.svg'
 import { getCart } from '../../../api/cart'
@@ -15,7 +16,7 @@ const CartSummary = () => {
   }
   return (
     <>
-      <div>
+      <StyledCartSummary>
         <div>
           <h2>Continue to Purchase</h2>
           <hr />
@@ -50,7 +51,7 @@ const CartSummary = () => {
             <img src={cart} height={'100%'} width={'100%'} alt="" />
           </div>
         </div>
-      </div>
+      </StyledCartSummary>
     </>
   )
 }

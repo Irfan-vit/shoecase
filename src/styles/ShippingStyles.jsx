@@ -27,7 +27,6 @@ const StyledAddress = styled.div`
   label > div {
     display: flex;
     gap: 2%;
-    /* width: 100%; */
     justify-content: space-between;
     flex-basis: 40%;
   }
@@ -69,4 +68,34 @@ const StyledAddressForm = styled.div`
     }
   }
 `
-export { StyledAddressWrapper, StyledAddress, StyledAddressForm }
+const StyledCheckout = styled.div`
+  display: flex;
+  flex-flow: column-reverse wrap;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    max-width: 1200px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 5%;
+    > :nth-child(1) {
+      flex-basis: 60%;
+    }
+    > :nth-child(2) {
+      flex-basis: 20%;
+      height: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+  }
+`
+
+export {
+  StyledAddressWrapper,
+  StyledAddress,
+  StyledAddressForm,
+  StyledCheckout,
+}

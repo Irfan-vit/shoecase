@@ -1,28 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
+import { getWishlistData } from '../../../api/wishlist'
 import { useAuth } from '../../../context/AuthContext'
 import Card from '../../../components/card/Card'
-import { getWishlistData } from '../../../api/wishlist'
-import styled from 'styled-components'
-import { H1 } from '../../../styles'
+import { H1 } from '../../../styles/index'
 import Empty from '../../../components/animations/Loaders/Empty'
-
-const StyledWishlist = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 2%;
-  flex-flow: row wrap;
-  @media (min-width: 550px) {
-    > figure {
-      flex-basis: 47%;
-    }
-  }
-  @media (min-width: 900px) {
-    > figure {
-      flex-basis: 23%;
-    }
-  }
-`
+import { StyledWishlist } from '../../../styles/index'
 
 const WishlistProducts = () => {
   const { token } = useAuth()

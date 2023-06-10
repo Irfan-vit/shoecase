@@ -1,17 +1,20 @@
 import styled from 'styled-components'
 
 const StyledCartCardWrapper = styled.div`
-  /* padding: 1rem; */
   margin: 0 auto;
   text-align: center;
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 0.5rem;
+  > * {
+    font-family: var(--font-family-hero);
+  }
   @media (min-width: 550px) {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    /* gap: 2%; */
     > :first-child {
       flex-basis: 17%;
     }
@@ -54,10 +57,6 @@ const StyledCartImage = styled.div`
     > svg {
       font-weight: 900px;
       font-size: 1.3rem;
-      /* transform: scale(1.3); */
-      :hover {
-        /* transform: scale(1.5); */
-      }
     }
   }
 `
@@ -86,7 +85,7 @@ const StyledCartWrapper = styled.div`
   flex-flow: column wrap;
   > :nth-child(1) {
     background-color: ${(props) => props.theme.offSetBg};
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 144px;
     > :nth-child(1) {
@@ -101,6 +100,21 @@ const StyledCartWrapper = styled.div`
       flex-basis: 70%;
       height: 75vh;
       overflow-y: scroll;
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: ${(props) => props.theme.offSetBg};
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: ${(props) => props.theme.action};
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: ${(props) => props.theme.primaryBg};
+      }
     }
     > :nth-child(1) {
       flex-basis: 30%;
@@ -152,10 +166,21 @@ const StyledCartWrapper = styled.div`
   }
 `
 
+// cart Summary
+
+const StyledCartSummary = styled.div`
+  z-index: 2;
+  > div {
+    margin: 0 auto;
+    text-align: center;
+  }
+`
+
 export {
   StyledCartImage,
   StyledCartCardWrapper,
   StyledCartCardsWrapper,
   StyledQuantity,
   StyledCartWrapper,
+  StyledCartSummary,
 }

@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { Button } from '../../../components/buttons/Primary'
+import { getCart } from '../../../api/cart'
 import { useAuth } from '../../../context/AuthContext'
 import { useUserData } from '../../../context/UserDataContext'
-import { getCart } from '../../../api/cart'
+import { Button } from '../../../components/buttons/Primary'
 const Order = () => {
-  const { userData } = useUserData()
   const { token } = useAuth()
+  const { userData } = useUserData()
   const getCartQuery = useQuery(['getCart', token], getCart)
   const data = getCartQuery?.data
   const getTotal = () => {

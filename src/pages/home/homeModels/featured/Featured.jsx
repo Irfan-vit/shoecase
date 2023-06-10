@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import useProductsData from '../../../../hooks/useProductsData'
 import { useSelector } from 'react-redux'
-import { StyledFeaturedCardWrapper } from '../../../../styles/index'
+import useProductsData from '../../../../hooks/useProductsData'
 import FeaturedTitle from '../../../../components/headings/FeaturedTitle'
 import FeaturedPoster from '../../../../components/poster/FeaturedPoster'
+import { StyledFeaturedCardWrapper } from '../../../../styles/index'
 
 const Featured = () => {
   const productsState = useSelector((state) => state.productsReducer)

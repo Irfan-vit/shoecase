@@ -1,5 +1,4 @@
 import rocket from '../../../../assets/json/mission.json'
-
 import {
   StyledMissionWrapper,
   StyledMission,

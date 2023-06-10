@@ -1,10 +1,8 @@
 import { useParams } from 'react-router-dom'
 import useProductDetailData from '../../hooks/useProductDetailData'
-
 import Nav from '../../components/navBar/Nav'
 import ProductDetailCard from './productModels/productDetail/ProductDetailCard'
 import ProductDertailShimmer from '../../components/shimmers/ProductDetailShimmer'
-
 import { StyledProductDetailWrapper } from '../../styles/index'
 
 const ProductDetail = () => {
@@ -18,7 +16,7 @@ const ProductDetail = () => {
           <ProductDertailShimmer />
         ) : (
           productDetailQuery.isSuccess && (
-            <ProductDetailCard props={productDetailQuery?.data} />
+            <ProductDetailCard product={productDetailQuery?.data} />
           )
         )}
       </StyledProductDetailWrapper>

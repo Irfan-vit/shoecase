@@ -1,10 +1,8 @@
-import Empty from '../../../components/animations/Loaders/Empty'
-import CartCard from '../../../components/card/CartCard'
-
-import { StyledCartCardsWrapper } from '../../../styles/index'
 import { useQuery } from '@tanstack/react-query'
-import { useAuth } from '../../../context/AuthContext'
 import { getCart } from '../../../api/cart'
+import { useAuth } from '../../../context/AuthContext'
+import CartCard from '../../../components/card/CartCard'
+import { StyledCartCardsWrapper } from '../../../styles/index'
 
 const CartCards = () => {
   const { token } = useAuth()

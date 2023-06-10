@@ -1,4 +1,4 @@
-import Skeleton from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import {
@@ -9,21 +9,23 @@ import {
 
 const ProductDertailShimmer = () => {
   return (
-    <StyledProductDetailWrapperShimmer>
-      <StyledProductDetailImageShimmer>
-        <Skeleton height={350} />
-      </StyledProductDetailImageShimmer>
-      <StyledProductDetailShimmer>
-        <h2>{<Skeleton />}</h2>
-        <h1>{<Skeleton height={50} />}</h1>
-        <ul>
-          <li>{<Skeleton />}</li>
-          <li>{<Skeleton />}</li>
-          <li>{<Skeleton />}</li>
-          <li>{<Skeleton />}</li>
-        </ul>
-      </StyledProductDetailShimmer>
-    </StyledProductDetailWrapperShimmer>
+    <SkeletonTheme baseColor="#e3c5f744" highlightColor="#875df12f">
+      <StyledProductDetailWrapperShimmer>
+        <StyledProductDetailImageShimmer>
+          <Skeleton height={350} />
+        </StyledProductDetailImageShimmer>
+        <StyledProductDetailShimmer>
+          <h2>{<Skeleton />}</h2>
+          <h1>{<Skeleton height={50} />}</h1>
+          <ul>
+            <li>{<Skeleton />}</li>
+            <li>{<Skeleton />}</li>
+            <li>{<Skeleton />}</li>
+            <li>{<Skeleton />}</li>
+          </ul>
+        </StyledProductDetailShimmer>
+      </StyledProductDetailWrapperShimmer>
+    </SkeletonTheme>
   )
 }
 

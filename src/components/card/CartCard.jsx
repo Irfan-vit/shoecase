@@ -1,27 +1,26 @@
+import { useAuth } from '../../context/AuthContext'
+import { useQueryClient } from '@tanstack/react-query'
+import { addtoWishlist, removeFromWishlist } from '../../api/wishlist'
+import { removeFromCart, updateCartItemQuantity } from '../../api/cart'
+import useAddToWishlist from '../../hooks/useAddToWishlist'
+import useRemoveFromWishlist from '../../hooks/useRemoveFromWishlist'
+import useRemoveFromCart from '../../hooks/useRemoveFromCart'
+import useUpdateCartItemQuantity from '../../hooks/useUpdateCartItemQuantity'
+import Success from '../animations/Loaders/Success'
+import Delete from '../animations/Loaders/Delete'
+import { Button } from '../buttons/Primary'
+import { FaTrash } from 'react-icons/fa'
+import { TbHeartPlus, TbHeartMinus } from 'react-icons/tb'
 import {
   StyledCartImage,
   StyledCartCardWrapper,
   StyledQuantity,
 } from '../../styles/index'
-import { useAuth } from '../../context/AuthContext'
-import { useQueryClient } from '@tanstack/react-query'
-import { FaTrash } from 'react-icons/fa'
-import Delete from '../animations/Loaders/Delete'
-import { removeFromCart, updateCartItemQuantity } from '../../api/cart'
-import useRemoveFromCart from '../../hooks/useRemoveFromCart'
-import useUpdateCartItemQuantity from '../../hooks/useUpdateCartItemQuantity'
-import { TbHeartPlus, TbHeartMinus } from 'react-icons/tb'
-import useAddToWishlist from '../../hooks/useAddToWishlist'
-import { addtoWishlist } from '../../api/wishlist'
-import useRemoveFromWishlist from '../../hooks/useRemoveFromWishlist'
-import { removeFromWishlist } from '../../api/wishlist'
-import Success from '../animations/Loaders/Success'
 
 const CartCard = ({ product }) => {
   const _id = product._id
   const { token } = useAuth()
   const queryClient = useQueryClient()
-  const cacheData = queryClient.getQueryData(['getCart', token])
   const { removeFromCartMutation } = useRemoveFromCart(removeFromCart, token)
   const { cartItemQuantityMutation } = useUpdateCartItemQuantity(
     updateCartItemQuantity,
@@ -73,7 +72,7 @@ const CartCard = ({ product }) => {
         <h4>{product.title}</h4>
         <span>{product.price}</span>
         <StyledQuantity>
-          <button
+          <Button
             onClick={() => {
               cartItemQuantityMutation.mutate({
                 _id,
@@ -83,12 +82,12 @@ const CartCard = ({ product }) => {
             }}
           >
             +
-          </button>
+          </Button>
           <p>
             {product.qty}
             {cartItemQuantityMutation.isLoading ? '...' : null}
           </p>
-          <button
+          <Button
             disabled={product.qty <= 1}
             onClick={() => {
               cartItemQuantityMutation.mutate({
@@ -99,14 +98,13 @@ const CartCard = ({ product }) => {
             }}
           >
             -
-          </button>
+          </Button>
         </StyledQuantity>
         <span
           onClick={() => {
             removeFromCartMutation.mutate({ _id, token })
           }}
         >
-          {/* {removeFromCartMutation.isLoading ? <Delete /> : <FaTrash />} */}
           {removeFromCartMutation.isIdle || removeFromCartMutation.isSuccess ? (
             <FaTrash />
           ) : removeFromCartMutation.isLoading ? (

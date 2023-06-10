@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { products } from '../api/products'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setPage } from '../reducer/productsSlice'
+import { setPage } from '../rtk/productsSlice'
 import { useUserData } from '../context/UserDataContext'
 const useProductsData = (queryState) => {
   const dispatch = useDispatch()

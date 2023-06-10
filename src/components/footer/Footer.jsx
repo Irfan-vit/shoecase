@@ -2,7 +2,6 @@ import { FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { SiHandshake } from 'react-icons/si'
 import { RiMapPinRangeFill } from 'react-icons/ri'
-
 import { StyledFooter, StyledFooterWraper } from '../../styles/index'
 
 const Footer = () => {
@@ -15,19 +14,19 @@ const Footer = () => {
           </h4>
           <ul>
             <li>
-              <a href="#">
+              <button>
                 <FaTwitter />
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#">
+              <button>
                 <FaLinkedinIn />
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#">
+              <button>
                 <FaInstagram />
-              </a>
+              </button>
             </li>
           </ul>
         </div>

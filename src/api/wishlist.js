@@ -26,7 +26,7 @@ export const addtoWishlist = async ({ product, token }) => {
           return `added to ${added.product.title} To wishlist`
         },
       },
-      error: 'Promise rejected 🤯',
+      error: 'Please Login First 🤯',
     },
   )
   return res.data.wishlist

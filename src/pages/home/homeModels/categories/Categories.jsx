@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleCategories } from '../../../../rtk/productsSlice'
 import useCategoriesData from '../../../../hooks/useCategoriesData'
-import { StyledCategoryCardWrapper } from '../../../../styles/index'
 import CategoryTitle from '../../../../components/headings/CategoryTitle'
 import CategoryPoster from '../../../../components/poster/CategoryPoster'
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleCategories } from '../../../../reducer/productsSlice'
+import { StyledCategoryCardWrapper } from '../../../../styles/index'
 
 const Categories = () => {
   const dispatch = useDispatch()
