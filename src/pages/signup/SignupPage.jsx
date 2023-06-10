@@ -33,7 +33,7 @@ const Signup = () => {
         token: localStorage.getItem('token'),
         user: localStorage.getItem('userDetails'),
       })
-      navigate(`${location?.state?.prevPath || '/'}`, { replace: true })
+      navigate(`${location?.state?.from?.pathname || '/'}`, { replace: true })
     } catch (error) {
       console.log(error)
     }

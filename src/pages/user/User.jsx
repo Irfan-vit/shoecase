@@ -4,7 +4,6 @@ import { Button } from '../../components/buttons/Primary'
 import Nav from '../../components/navBar/Nav'
 const User = () => {
   const { user, setUser } = useAuth()
-  console.log(user)
   const userDetails = JSON.parse(user?.user)
   const navigate = useNavigate()
   return (
